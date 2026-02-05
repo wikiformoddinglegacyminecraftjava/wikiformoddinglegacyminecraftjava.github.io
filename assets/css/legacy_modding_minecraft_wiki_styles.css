@@ -1,0 +1,104 @@
+html {
+	background-color: #e0e0e0;
+}
+
+.top-navigation-bar {
+	background-color: #333333;
+    display: flex;
+    justify-content: left;
+	
+	position: absolute; /* OPTIONAL: Change this from absolute to fixed to make navbar always visible when scrolling. */
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+}
+
+.top-navigation-bar a {
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.top-navigation-bar a:hover {
+	background-color: #e0e0e0;
+	color: #333333;
+}
+
+.wiki-search {
+	display: flex;
+	justify-content: center;
+}
+
+.wiki-layout {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Copied and modifed from w3schools: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav_fixed2 */
+.wiki-side-navigation-bar {
+	width: max-content;
+	/*
+	position: relative;*/
+	z-index: 1;
+	/*
+	top: 20px;
+	left: 10px;*/
+	background: #333333;
+	overflow-x: visible;
+	padding: 8px 0;
+	
+	margin-right: 15px;
+}
+
+.wiki-side-navigation-bar a {
+	padding: 0px 8px;
+	text-decoration: none;
+	font-size: 20px;
+	color: #f2f2f2;
+	display: block;
+	
+	text-align: left;
+}
+
+.wiki-side-navigation-bar a:hover {
+	background-color: #e0e0e0;
+	color: #333333;
+}
+
+.wiki-content {
+	flex: 1;
+	/* Temporary for testing
+	border: 1px solid black;
+	*/
+}
+
+.information-section {
+	background-color: white;
+	border-radius: 4px;
+	padding: 10px;
+	border: 7px solid white;
+}
+
+.information-section table {
+  border-collapse: collapse;
+}
+
+.information-section td,
+.information-section th {
+  border: 2px solid black;
+  text-align: left;
+  padding: 8px;
+}
+
+.information-section tbody tr:hover {
+	background-color: #aaaaaa;
+}
+
+.information-section thead,
+.information-section tr:nth-child(even) {
+  background-color: #dddddd;
+}
