@@ -43,11 +43,79 @@
 			
 			<div class="wiki-layout">
 				<div class="wiki-side-navigation-bar">
+					<div class="wiki-side-navigation-bar-category">
+						<u>Getting started</u>
+					</div>
 					<a href="#useful_links">Useful Links</a>
 					<a href="#setup">Setting up the development environment</a>
 					<a href="#key_concepts">Key concepts</a>
-					<a href="#">Item</a>
-					<a href="#">Item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					
+					<hr>
+					
+					<div class="wiki-side-navigation-bar-category">
+						<u>Items</u>
+					</div>
+					<a href="#">Making your first item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<div class="wiki-side-navigation-bar-category">
+						<u>Custom versions of vanilla items</u>
+					</div>
+					<a href="#">Sword, Pickaxe, Shovel, Hoe</a>
+					<a href="#">Axe</a>
+					<a href="#">Shield</a>
+					<a href="#">Player armor</a>
+					<a href="#">Horse rmor</a>
+					<a href="#">Bow</a>
+					<a href="#">Arrow</a>
+					<a href="#">Flint and Steel</a>
+					<a href="#">Shears</a>
+					<a href="#">Fishing rod</a>
+					<a href="#">Totem</a>
+					<a href="#">Potion</a>
+					<a href="#">Enchanted books</a>
+					<a href="#">End Crystal</a>
+					<a href="#">Elytra</a>
+					<a href="#">Banners</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					
+					<hr>
+					
+					<div class="wiki-side-navigation-bar-category">
+						<u>Blocks</u>
+					</div>
+					<a href="#">Making your first block</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					<a href="#">Temporary placeholder list item</a>
+					
+					<hr>
+					
+					<div class="wiki-side-navigation-bar-category">
+						<u>Other</u>
+					</div>
+					<a href="#">Adding a license to your mod</a>
+					<a href="#">Configuration files</a>
+					<a href="#language_files">Language files</a>
+					<a href="#make_creative_tab">Making your mod's creative tab</a>
+					<a href="#modding_tips">Modding tips</a>
+					<a href="#troubleshooting">Troubleshooting</a>
+					<a href="#miscellaneous">Miscellaneous</a>
 					<a href="#temporary">Temporary resources to continue the wiki</a>
 				</div>
 				
@@ -56,7 +124,7 @@
 						<hr>
 						<h1>Welcome to the 1.12.2 Forge wiki!</h1>
 						<h2>Click on the sidebar links to start reading the wiki content.</h2>
-						<h2>The order in which this wiki should be read is from the top sidebar button to the bottom one.</h2>
+						<h2>The order in which this wiki should be read is from the top sidebar button to the bottom sidebar button.</h2>
 					</div>
 					
 					<div id="useful_links" class="wiki-page" style="display:none;">
@@ -68,6 +136,8 @@
 						<br>
 						
 						Official Forge documentation for versions 1.12.x: https://docs.minecraftforge.net/en/1.12.x/
+						<br>
+						- Please frequently use these docs as a reference when making your mods.
 						
 						<br>
 						<br>
@@ -78,14 +148,587 @@
 					<div id="setup" class="wiki-page" style="display:none;">
 						<hr>
 						<h1>Setting up the development environment</h1>
+						
+						<b><u>Notes before you continue:</u></b>
+						<br>
+						(NOTE FROM https://github.com/UEMxMDE): Much of the information on this page is already mentioned on the official 1.12.x Forge docs (https://docs.minecraftforge.net/en/1.12.x/) but when I was first learning how to set up modding for 1.12.2 back in early 2024 I ran into some issues, so this wiki page will contain a mix of steps that worked for me and steps that are already in the 1.12.x Forge docs.
+						
+						<br>
+						<br>
+						
+						(NOTE FROM https://github.com/UEMxMDE): This tutorial was made based off of my experience with the Forge MDK version 14.23.5.2860 for 1.12.2 because that was the latest version available back when I was first learning to make Minecraft mods in early 2024. The current latest version as of me typing this (which is February 10, 2026) is 14.23.5.2864, so if anything in the tutorial below does not function properly please create a new issue in the repository for this website here: https://github.com/wikiformoddinglegacyminecraftjava/wikiformoddinglegacyminecraftjava.github.io/issues
+						
+						<h2>Software to download</h2>
+						Java JDK 8u401 - https://gist.github.com/wavezhang/ba8425f24a968ec9b2a8619d7c2d86a6?permalink_comment_id=4888806
+						<br>
+						- Unfortunately, the official website to download older JDKs requires an Oracle account to download them, so unless you already have an Oracle account you need to visit the above gist.github.com URL to find direct download URLs from the community for Java JDK 8u401.
+						<br>
+						- The download URL in the above gist.github.com URL for JDK 8u401 posted by DenKaGamer has been verified by this wiki's owner (https://github.com/UEMxMDEDE) to be safe to download and install for Windows.
+						<br>
+						- The other versions of the JDK in the above gist.github.com URL may also work so if you are running into trouble with JDK 8u401, consider using another Java 8 JDK version. This is especially true if you are not planning to use a Windows environment to develop mods (e.g. if you plan on using Linux or macOS instead). <b>In the above gist.github.com URL, you can click on "Load earlier comments" to see more download options for a Java 8 JDK that may be more suited to you. Make sure you are only using a <i><u>Java 8</u></i> JDK instead of Java 17 JDK, 21 JDK, etc.</b>
+						
+						<br>
+						<br>
+						
+						IntelliJ IDEA - https://www.jetbrains.com/idea/download/
+						<br>
+						- This is where you will be typing and running your Java code. Don't worry about any free trial expiring, because even if it expires, you will still have access to everything you will need to develop mods and much more anyway.
+						
+						<br>
+						<br>
+						
+						Latest Forge MDK for 1.12.2 - https://files.minecraftforge.net/net/minecraftforge/forge/index_1.12.2.html
+						
+						<h2>Setting up Java JDK 8u401</h2>
+						<ol>
+							<li>
+								Install Java JDK 8u401
+							</li>
+							<li>
+								. . .
+							</li>
+						</ol>
+						
+						<h2>Setting up JAVA_HOME (MAY NOT BE NEEDED, NEEDS MORE TESTING)</h2>
+						<u>This tutorial only applies to Windows users.</u>
+						<ol>
+							<li>
+								In the search area of the task bar, type "advanced system settings"
+							</li>
+							<li>
+								Click on "View advanced system settings"
+							</li>
+							<li>
+								Click on "Environment Variables..."
+							</li>
+							<li>
+								Click on the "New..." button under the "User variables for <username>" area
+							</li>
+							<li>
+								Set "JAVA_HOME" as the variable name
+							</li>
+							<li>
+								Set the directory of your Java 8 JDK installation as the variable value (for example, "C:\Program Files\Java\jdk-1.8")
+							</li>
+							<li>
+								Click "OK" to close the "New User Variable" window
+							</li>
+							<li>
+								Click on the "Path" variable under the "System variables" area
+							</li>
+							<li>
+								Click on the "Edit..." button under the "System variables" area
+							</li>
+							<li>
+								Click on the "New" button
+							</li>
+							<li>
+								In the newly created text box, type the exact path from step 5, but add "\bin" at the end of the path (for example, "C:\Program Files\Java\jdk-1.8\bin")
+							</li>
+							<li>
+								Click "OK" to close the "Edit environment variable" window
+							</li>
+							<li>
+								Click "OK" to close the "Environment Variables" window
+							</li>
+							<li>
+								Click "OK" to close the "System Properties" window
+							</li>
+						</ol>
+						
+						<h2>Setting up IntelliJ IDEA</h2>
+						<ol>
+							<li>
+								Install IntelliJ IDEA
+							</li>
+							<li>
+								. . .
+							</li>
+						</ol>
+						
+						<h2>Setting up the Forge MDK</h2>
+						<ol>
+							<li>
+								<b>
+									IMPORTANT: Create a dedicated folder containing all of your mods. This folder is where you will be doing all of your mod development. The tutorial starting from now will take place entirely in this folder unless otherwise specified.
+								</b>
+							</li>
+							<li>
+								Since you have already downloaded the latest Forge MDK for 1.12.2, move the MDK zip file to your dedicated mod development folder.
+							</li>
+							<li>
+								Unzip the MDK file into your mod development folder and rename the unzipped folder to the name of your mod. If you are following this entire setup for the first time, then for the sake of this tutorial it is recommended to rename the folder to "tutorial_mod" until you are able to make your own mod by generalizing this tutorial to your needs.
+							</li>
+							<li>
+								Open IntelliJ IDEA. If you are opening it for the first time you should see the "Welcome to IntelliJ IDEA" window along with an  empty list of all your IntelliJ IDEA projects.
+							</li>
+							<li>
+								Click on the settings button and click on "Settings"
+							</li>
+							<li>
+								Search for "Importing" on the search bar, and in the "Importing" section look for "JDK for Importer:", then select "Use JAVA_HOME (Path: C:\Program Files\Java\jdk-1.8)"
+								<ul>
+									<li>
+										The path may vary depending on where you installed your JDK, but reguardless of what path you choose it should still show up in the "Use JAVA_HOME" option.
+									</li>
+								</ul>
+							</li>
+							<li>
+								Click on "OK" to close the Settings window
+							</li>
+							<li>
+								Open the unzippped MDK (tutorial_mod) in IntelliJ IDEA
+								<ol>
+									<li>
+										In the "Welcome to IntelliJ IDEA" window, click on "Open"
+									</li>
+									<li>
+										Navigate to the directory of tutorial_mod (e.g. C:\. . .\&lt;your_minecraft_mods_folder&gt;\tutorial_mod)
+									</li>
+									<li>
+										Click on "Select Folder"
+									</li>
+									<li>
+										You may get a dialogue box that says "Trust and Open Project 'tutorial_mod'?". Enable "Trust all projects in '&lt;your_minecraft_mods_folder&gt;'" and click "Trust Project"
+									</li>
+									<li>
+										Once you clicked on "Trust Project", the tutorial_mod project will open. You can track the loading progress by checking the loading bar in the bottom-right corner of the window and waiting until it finishes loading.
+									</li>
+								</ol>
+							</li>
+							<li>
+								Set the IntelliJ JDK for tutorial_mod to JDK 8u401 (or whichever JDK you decided to download and install) (see the JAVA_HOME tutorial just in case)
+								<ol>
+									<li>
+										Click on File -> Project Structure...
+									</li>
+									<li>
+										In the "SDK:" section, select "1.8 Oracle OpenJDK 1.8.0_401" (or whichever JDK you decided to download and install). If this is already selected then you can move to the next step.
+										<ul>
+											<li>
+												In the "SDK:" section, you may see all the "Detected SDKs" on your computer. If the directory for your installed JDK shows up there (e.g. "C:\Program Files\Java\jdk-1.8 Oracle OpenJDK 1.8.0_401") then you can select that instead.
+											</li>
+										</ul>
+									</li>
+									<li>
+										Click "OK" to close the "Project Structure" window
+									</li>
+								</ol>
+							</li>
+							<li>
+								Double press the CTRL key to open the "Run Anything" window and type "gradlew genIntellijRuns" (for macOS and Linux: "./gradlew genIntellijRuns"), then press the ENTER key.
+								<ul>
+									<li>
+										Wait for the command to finish executing. This may take a few minutes.
+									</li>
+									<li>
+										Once this is finished executing you will have 2 run configurations: "runClient" and "runServer". These will be used to launch the game with your modified code to test if your code works properly.
+									</li>
+								</ul>
+							</li>
+							<li>
+								<b>
+									IMPORTANT: Double press CTRL key and type "gradlew runClient" (for macOS and Linux: "./gradlew runClient") to make sure that the client runs properly (and that it runs with sound), then press the ENTER key.
+								</b>
+								<ul>
+									<li>
+										Wait for the command to finish executing. This may take a few minutes.
+									</li>
+									<li>
+										Once this is finished executing you can close Minecraft.
+									</li>
+								</ul>
+							</li>
+							<li>
+								Open the "build.gradle" file inside of IntelliJ IDEA on the left side by double clicking on it. Then copy and paste this code onto the very bottom of "build.gradle", then press CTRL+S to save the change:
+								<!-- <pre> retains the whitespace for proper indentation and the line below is designed to prevent an extra blank newline from being on top of a highlighted selection of the entire code below. -->
+								<pre><code>sourceSets {
+	main {
+		output.resourcesDir = output.classesDir
+	}
+}</code></pre>
+								<!-- DO NOT CHANGE THE INDENTS OF THE ABOVE CODE. The <pre> tag will autmatically move the code based on any indents or whitespaces placed within <pre>, so unfortunately the above code needs to look exactly as it does in order to display properly on the webpage. -->
+								This code is meant to fix some texture bugs that may occur when debugging your mod.
+							</li>
+							<li>
+								In the "build.gradle" file there are 3 important variables you need to keep track of called "version", "group", and "archivesBaseName".
+								<ul>
+									<li>
+										The "version" variable keeps track of your mod version. It's default value is 1.0 so leave it as it is for now. You should update this variable when you decide to release updates to your own mods.
+									</li>
+									<li>
+										The "group" variable is used when you build your mod. In this variable, replace "yourname" with your username and replace "modid" with "tutorialmod".
+									</li>
+									<li>
+										The "archivesBaseName" is the name of your mod's built jar file. In this variable, replace "modid" with "tutorialmod".
+									</li>
+									<li>
+										Press CTRL+S to save the changes.
+									</li>
+								</ul>
+							</li>
+							<li>
+								From the top menu in IntelliJ IDEA, click on View -> Tool Windows -> Gradle. In the Gradle window, click on "Sync All Gradle Projects" (the button looks like a refresh button / 2 circular arrows pointing at each other) and wait for the process to finish.
+								<ul>
+									<li>
+										<b>
+											IMPORTANT: You MUST do this every time you make and save any change to the "build.gradle" file or "settings.gradle" file.
+										</b>
+									</li>
+								</ul>
+							</li>
+						</ol>
+						
+						<h2>Your entire mod folder structure</h2>
+						On the left side of your IntelliJ IDEA project you should see a list of folders and files. All of your mod's code and assets will be located in "src/main/java" and "src/main/resources".
+						<br>
+						<br>
+						
+						<u>
+							There are still some things you need to do before you look at the final folder structure:
+						</u>
+						
+						<br>
+						<br>
+						
+						If you finished the "Setting up the Forge MDK" tutorial then you should see the following folder structure in "src/main/java":
+						
+						<br>
+						<br>
+						
+						<code>
+							src/main
+							<br>
+							└─ java
+							<br>
+							&nbsp;&nbsp;&nbsp;└─ com.example.examplemod
+							<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ ExampleMod.java
+						</code>
+						
+						<br>
+						
+						You should delete "com.example.examplemod" and "ExampleMod.java" before you begin developing your mod.
+						
+						<br>
+						<br>
+						
+						After that, right click on the "java" folder in IntelliJ IDEA and go to New -> Package. For the package name, type "yourname.modid" (you already set up "yourname" and "modid" earlier in this tutorial) and press the ENTER key. Your new folder structure should look like this:
+						
+						<br>
+						<br>
+						
+						<code>
+							src/main
+							<br>
+							└─ java
+							<br>
+							&nbsp;&nbsp;&nbsp;└─ yourname.modid <- You replaced "yourname" and "modid" in the "Setting up the Forge MDK" tutorial above
+						</code>
+						
+						<br>
+						
+						If you finished the "Setting up the Forge MDK" tutorial then you should see a file called "mcmod.info" in "src/main/resources". This file contains information of your mod that players will see in-game when they view your mod from the in-game Mods button. By default it should look like this:
+						<pre><code>[
+{
+	"modid": "examplemod",
+	"name": "Example Mod",
+	"description": "Example placeholder mod.",
+	"version": "${version}",
+	"mcversion": "${mcversion}",
+	"url": "",
+	"updateUrl": "",
+	"authorList": ["ExampleDude"],
+	"credits": "The Forge and FML guys, for making this example",
+	"logoFile": "",
+	"screenshots": [],
+	"dependencies": []
+}
+]</code></pre>
+						See the official 1.12.2 Forge docs for more information about this file: https://docs.minecraftforge.net/en/1.12.x/gettingstarted/structuring/#the-mcmodinfo-file
+						
+						<br>
+						<br>
+						
+						If you finished the "Setting up the Forge MDK" tutorial then you should see a file called "pack.mcmeta" in "src/main/resources". By default it should look like the code below. If for some reason you don't see this file, then create the file in "src/main/resources". Then copy the below code into "pack.mcmeta" and press CTRL+S to save the file.
+						<br>
+						<pre><code>{
+	"pack": {
+		"description": "examplemod resources",
+		"pack_format": 3,
+		"_comment": "A pack_format of 3 should be used starting with Minecraft 1.11. All resources, including language files, should be lowercase (eg: en_us.lang). A pack_format of 2 will load your mod resources with LegacyV2Adapter, which requires language files to have uppercase letters (eg: en_US.lang)."
+	}
+}</code></pre>
+						
+						<h3>Final mod folder structure</h3>
+						The folder structure below is what your entire mod folder structure should look like <b><u>only if you plan to add any of the features in your mod that appear in the folder structure tree below.</u></b>. If any folder/file below isn't in your project already, create it yourself, <b><u>but only if you absolutely need to</u></b>.
+						
+						<br>
+						<br>
+						
+						<code>
+							src/main
+							<br>
+							├─ java
+							<br>
+							│&nbsp;&nbsp;└─ yourname.modid
+							<br>
+							└─ resources
+							<br>
+							&nbsp;&nbsp;&nbsp;├─ assets
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├─ minecraft
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;│&nbsp;&nbsp;└─ textures
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ gui
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ container
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ creative_inventory
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ tab_modid.png <- Tutorial for this is here: <a href="#make_creative_tab">https://wikiformoddinglegacyminecraftjava.github.io/1.12.2_forge/#make_creative_tab</a>
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└─ modid <- You replaced "modid" in the "Setting up the Forge MDK" tutorial above, so you MUST do the same here or nothing in this folder will work properly.
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ blockstates
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ lang
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├─ en_us.lang <- Tutorial for this is here: <a href="#language_files">https://wikiformoddinglegacyminecraftjava.github.io/1.12.2_forge/#language_files</a>
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└─ Other .lang files go in this folder.
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ models
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;├─ block
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;└─ item
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ textures
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ blocks
+							<br>
+							&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ items
+							<br>
+							&nbsp;&nbsp;&nbsp;├─ mcmod.info
+							<br>
+							&nbsp;&nbsp;&nbsp;└─ pack.mcmeta
+						</code>
+						
+						<h2>Finalizing everything</h2>
+						<ul>
+							<li>
+								<b>
+									Make sure that all the mods you develop are set up in your dedicated Minecraft mods folder.
+								</b>
+							</li>
+							<li>
+								<b>
+									How to run the client:
+								</b>
+								<br>
+								<u>Method #1:</u>
+								<ol>
+									<li>
+										Double press CTRL key and type "gradlew runClient" (for macOS and Linux: "./gradlew runClient") to make sure that the client runs properly.
+									</li>
+									<li>
+										Wait for the command to finish executing.
+									</li>
+								</ol>
+								<u>Method #2:</u> In IntelliJ IDEA, there is a button on the top right that looks like a green triangle. To the left of this button is the dropdown menu for your run configurations. Select the "runClient" run configuration on this menu and then click on the green triangle button (the green triangle button is the "Run" button).
+							</li>
+							<li>
+								<b>
+									How to run the server:
+								</b>
+								<br>
+								<u>Method #1:</u>
+								<ol>
+									<li>
+										Double press CTRL key and type "gradlew runServer" (for macOS and Linux: "./gradlew runServer") to make sure that the client runs properly.
+									</li>
+									<li>
+										Wait for the command to finish executing.
+									</li>
+								</ol>
+								<u>Method #2:</u> In IntelliJ IDEA, there is a button on the top right that looks like a green triangle. To the left of this button is the dropdown menu for your run configurations. Select the "runServer" run configuration on this menu and then click on the green triangle button (the green triangle button is the "Run" button).
+							</li>
+							<li>
+								<b>
+									How to build the mod jar:
+								</b>
+								<br>
+								<ol>
+									<li>
+										Open the main class of your mod in IntelliJ IDEA and change the "VERSION" variable to your desired mod version.
+									</li>
+									<li>
+										In IntelliJ, double press CTRL key and type "gradlew build" (for macOS and Linux: "./gradlew build")
+									</li>
+									<li>
+										Wait for the command to finish executing.
+									</li>
+									<li>
+										Once the command is finished executing, you can find your mod jar file in "&lt;your_mod_folder&gt;\build\libs\[archivesBaseName]-[version].jar"
+									</li>
+									<li>
+										Move the mod jar file to the mods folder to test it. You can test it by putting the mod jar file here: "&lt;your_mod_folder&gt;\run\mods\[archivesBaseName]-[version].jar" or by putting the mod jar file in the mods folder of any Minecraft installation on your computer that has a Forge 1.12.2 profile installed on it.
+									</li>
+								</ol>
+							</li>
+							<li>
+								<b>
+									If you are having any issues with this tutorial, there are 3 things you can do:
+								</b>
+								<ul>
+									<li>
+										Create an issue in the repository here: https://github.com/wikiformoddinglegacyminecraftjava/wikiformoddinglegacyminecraftjava.github.io/issues
+									</li>
+									<li>
+										Read the forge docs: https://docs.minecraftforge.net/en/1.12.x/
+									</li>
+									<li>
+										Search the issue online to see if anyone else has these issues.
+									</li>
+								</ul>
+							</li>
+						</ul>
+						
+						<h2>Common issues</h2>
+						<ul>
+							<li>
+								Running the client works but there is no sound.
+								<br>
+								Fix:
+							</li>
+							<li>
+								Running the client on a PC with a 4k monitor makes the game appear on the bottom right corner of the screen instead of the middle of the screen.
+								<br>
+								Fix:
+							</li>
+						</ul>
 					</div>
 					
 					<div id="key_concepts" class="wiki-page" style="display:none;">
 						<hr>
 						<h1>Key concepts</h1>
+						<h2>Items</h2>
+						<h2>Blocks</h2>
+						<h2>Events</h2>
+						<h2>Capabilities</h2>
 					</div>
 					
+					<div id="language_files" class="wiki-page" style="display:none;">
+						<hr>
+						<h1>Language files</h1>
+						Language files are ___.
+						
+						<br>
+						<br>
+						
+						This page will provide a tutorial on how to set up a .lang file for en_us. You can generalize this tutorial to your language.
+						
+						<br>
+						<br>
+						
+						Open your mod project in IntelliJ IDEA. Create a new file called "en_us.lang" in "src/main/resources/modid/lang"
+						<br>
+						Final result: "src/main/resources/modid/lang/en_us.lang"
+						
+						<br>
+						<br>
+						
+						The code below shows everything that is possible in language files.
+						
+						<pre><code># Items, Armor, Tools
+item.item_name.name=Item name
+
+# Fluids
+fluid.fluid_name.name=Fluid name
+
+# Blocks
+tile.block_name.name=Block name
+
+# Tabs
+itemGroup.creativemodemodtab=Creative Mode Mod Tab
+
+# Containers
+container.container_name=Container name
+
+# Entities
+entity.entity_name.name=Entity name
+
+# World Types
+generator.world_type_name=World Type name
+
+# Enchantments
+enchantment.enchantment_name=Enchantment name
+</code></pre>
+						Here is an explanation of everything you see above:
+						<pre><code># This is a comment.
+
+
+# Example using an item
+item.item_name.name=Item name
+# "item" refers to what type of object this is
+# "item_name" is the registry name/unlocalized name of your item. IMPORTANT: This does not apply to any creative mode inventory tabs that you may have set up for your mod.
+# "Item name" is the name of your item that players will see in-game. You can put anything after the = sign.
+
+# Example items
+item.diamond_ingot.name=Diamond ingot
+item.demonstration.name=Anything can go here
+
+# Creative mode inventory tab
+itemGroup.creativemodemodtab=Creative Mode Mod Tab
+# "Creative Mode Mod Tab" is the name of the creative mode tab that you see in-game.
+</code></pre>
+					</div>
 					
+					<div id="make_creative_tab" class="wiki-page" style="display:none;">
+						<hr>
+						<h1>Making your mod's creative tab</h1>
+						Once you have your creative tab png file (tab_&lt;modid_goes_here&gt;.png) put it in this directory in your mod project folder: "src/main/resources/assets/minecraft/textures/gui/container/creative_inventory"
+						<br>
+						Final result: "src/main/resources/assets/minecraft/textures/gui/container/creative_inventory/tab_&lt;modid_goes_here&gt;.png"
+						
+						<br>
+						<br>
+						
+						See the "Language Files" section for how to give your creative mode inventory tab a proper name.
+					</div>
+					
+					<div id="modding_tips" class="wiki-page" style="display:none;">
+						<hr>
+						<h1>Modding tips</h1>
+						How to have your mod send a message in chat: "playerIn.sendMessage(new TextComponentString("Insert text here"));"
+						<br>
+						Example usage:
+						<pre><code>. . .
+if(exampleEvent == true) {
+	. . .
+	playerIn.sendMessage(new TextComponentString("Insert text here"));
+	. . .
+}
+. . .</code></pre>
+					</div>
+					
+					<div id="troubleshooting" class="wiki-page" style="display:none;">
+						<hr>
+						<h1>Troubleshooting</h1>
+						Some older 1.12.2 Forge modding tutorials have a method called "setTranslationKey". In newer versions of the Forge MDK for 1.12.2, using this method name may cause errors. To fix these errors, replace "setTranslationKey" with "setUnlocalizedName".
+					</div>
+					
+					<div id="miscellaneous" class="wiki-page" style="display:none;">
+						<hr>
+						<h1>Miscellaneous information</h1>
+						How to clear Gradle cache: https://stackoverflow.com/questions/17561826/how-to-clean-project-cache-in-intellij-idea-like-eclipses-clean
+						<br>
+						- For Windows users, Gradle cache is stored here: "C:\Users\&lt;username&gt;\.gradle"
+						<br>
+						- You may want to do this if you run into issues that are caused by Gradle cache.
+					</div>
 					
 					<div id="temporary" class="wiki-page" style="display:none;">
 						<h1>DELETE THIS SECTION ONCE THIS WIKI IS FINISHED</h1>

@@ -56,7 +56,7 @@ html {
 
 .wiki-side-navigation-bar a {
 	padding: 0px 8px;
-	text-decoration: none;
+	text-decoration: none; /* Removes underline from hyperlinks. */
 	font-size: 20px;
 	color: #f2f2f2;
 	display: block;
@@ -67,6 +67,13 @@ html {
 .wiki-side-navigation-bar a:hover {
 	background-color: #e0e0e0;
 	color: #333333;
+}
+
+.wiki-side-navigation-bar-category {
+	font-size: 20px;
+	color: #f2f2f2;
+	
+	text-align: center;
 }
 
 .wiki-content {
@@ -101,4 +108,18 @@ html {
 .information-section thead,
 .information-section tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+code {
+	border: 1px solid black;
+	/*
+	border-radius: 5px;
+	*/
+	display: block;
+	padding: 8px;
+	background: #f8f8f8;
 }
