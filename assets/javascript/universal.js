@@ -98,7 +98,7 @@ document.getElementById('wiki-search-button').addEventListener('click', searchWi
 function performGlobalSearch() {
     const query = document.getElementById("global-search")?.value.trim();
     if (!query) return;
-    window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
+    window.location.href = `/search/search.html?q=${encodeURIComponent(query)}`;
 }
 
 document.getElementById("global-search-button")?.addEventListener("click", performGlobalSearch);
@@ -109,25 +109,45 @@ document.getElementById("global-search")?.addEventListener("keydown", e => {
 
 // LOCAL SEARCH (wiki SPA only)
 function searchLocalWiki() {
-    const query = document.getElementById("local-search")?.value.toLowerCase().trim();
-    if (!query) return;
+    const query = document.getElementById("local-search").value.toLowerCase().trim();
+    const resultsContainer = document.getElementById("local-search-results");
+
+    if (!query) {
+        resultsContainer.innerHTML = "";
+        return;
+    }
 
     const pages = document.querySelectorAll(".wiki-page");
-    let firstMatch = null;
+    const matches = [];
 
     pages.forEach(page => {
         if (page.textContent.toLowerCase().includes(query)) {
-            if (!firstMatch) firstMatch = page.id;
+            matches.push({
+                id: page.id,
+                title: page.querySelector("h1, h2, h3")?.textContent || page.id,
+                snippet: page.textContent.substring(0, 200)
+            });
         }
     });
 
-    if (firstMatch) window.location.hash = firstMatch;
+    if (matches.length === 0) {
+        resultsContainer.innerHTML = "<p>No results found.</p>";
+        return;
+    }
+
+    resultsContainer.innerHTML = matches.map(m => `
+        <div class="local-result">
+            <h3><a href="#${m.id}">${m.title}</a></h3>
+            <p>${m.snippet}...</p>
+        </div>
+    `).join("");
 }
 
 document.getElementById("local-search-button")?.addEventListener("click", searchLocalWiki);
 document.getElementById("local-search")?.addEventListener("keydown", e => {
     if (e.key === "Enter") searchLocalWiki();
 });
+
 
 
 
