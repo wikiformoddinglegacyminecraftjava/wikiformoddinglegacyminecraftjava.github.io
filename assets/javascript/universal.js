@@ -50,7 +50,9 @@ window.addEventListener('hashchange', () => {
     highlightActiveLink();
 });
 
+
 // For searching the wiki
+/*
 function searchWiki() {
     const query = document.getElementById('wiki-search').value.toLowerCase();
     const pages = document.querySelectorAll('.wiki-page');
@@ -84,4 +86,49 @@ document.getElementById('wiki-search').addEventListener('keydown', function(e) {
     }
 });
 document.getElementById('wiki-search-button').addEventListener('click', searchWiki);
+*/
+
+
+
+
+
+
+
+// GLOBAL SEARCH
+function performGlobalSearch() {
+    const query = document.getElementById("global-search")?.value.trim();
+    if (!query) return;
+    window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
+}
+
+document.getElementById("global-search-button")?.addEventListener("click", performGlobalSearch);
+document.getElementById("global-search")?.addEventListener("keydown", e => {
+    if (e.key === "Enter") performGlobalSearch();
+});
+
+
+// LOCAL SEARCH (wiki SPA only)
+function searchLocalWiki() {
+    const query = document.getElementById("local-search")?.value.toLowerCase().trim();
+    if (!query) return;
+
+    const pages = document.querySelectorAll(".wiki-page");
+    let firstMatch = null;
+
+    pages.forEach(page => {
+        if (page.textContent.toLowerCase().includes(query)) {
+            if (!firstMatch) firstMatch = page.id;
+        }
+    });
+
+    if (firstMatch) window.location.hash = firstMatch;
+}
+
+document.getElementById("local-search-button")?.addEventListener("click", searchLocalWiki);
+document.getElementById("local-search")?.addEventListener("keydown", e => {
+    if (e.key === "Enter") searchLocalWiki();
+});
+
+
+
 // ---------- The code above is specifically for the wiki pages themselves

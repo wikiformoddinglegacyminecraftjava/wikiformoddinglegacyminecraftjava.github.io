@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Universal stylesheet for all pages -->
+		<link rel="stylesheet" href="../assets/css/universal_styles.css">
+		
+		<!-- Stylesheet for this specific page -->
+		<link rel="stylesheet" href="../assets/css/legacy_modding_minecraft_wiki_styles.css">
+		
+		<!-- Page title -->
+		<title>Minecraft Java Edition Legacy Modding Wiki - Contribution Guidelines</title>
+		
+		<!-- No favicon for now. -->
+		<link rel="icon" type="image/x-icon" href="../assets/images/">
+		
+		<!-- Universal javascript for all pages -->
+		<script src="../assets/javascript/universal.js" defer></script>
+	</head>
+	<body>
+		<nav class="top-navigation-bar">
+			<a href="/">Back to the wiki home page</a>
+		</nav>
+		
+		<br>
+		<br>
+		<br>
+		
+		<div class="wiki-search">
+			<input type="text" id="wiki-search" placeholder="Search the whole website" class="wiki-search-bar">
+			<button id="wiki-search-button">Search</button>
+		</div>
+		
+		<br>
+		
+		<div class="information-section">
+			<h1 class="center-text">GUIDLINES ON HOW TO CONTRIBUTE TO THE WIKI</h1>
+			<b>
+				- Go to the repository for this wiki here to contribute any changes: https://github.com/wikiformoddinglegacyminecraftjava/wikiformoddinglegacyminecraftjava.github.io
+				<br>
+				<br>
+				- All changes made to the wiki must be approved by me (https://github.com/UEMxMDE/ the owner of this repository and organization) to keep things organized.
+				<br>
+				<br>
+				- The copyright in the footer is a temporary placeholder until I can think of a better license for this wiki OR if I decide to leave the license as it is.
+				<br>
+				<br>
+				- Prioritize adding missing content to the wiki over changing the style of the wiki until sufficient content is added to the wiki to warrant any stylistic changes.
+				<br>
+				<br>
+				- All CSS styling must be done in separate .css files (only the ones in this repository) and must be applied to HTML elements using classes only. This means no inline CSS and no &lt;style&gt; tags. The only exceptions to this are:
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- If an HTML tag itself (e.g. &lt;b&gt; for bolding text) can be used as an alternative to existing CSS code (e.g. font-weight: bold;)
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- The hidden &lt;div&gt; tags on individual wiki pages that are meant to separate different "pages" within the wiki page itself (search the concept of "Single-page application" (SPA) on the internet because every wiki page must be an SPA).
+				<br>
+				<br>
+				- Do not implement bootstrap. We can make all the CSS classes ourselves and the website needs to look simple.
+				<br>
+				<br>
+				- All JavaScript must be done in separate .js files. This means no inline JavaScript and no usage of the &lt;script&gt; tag for JavaScript code directly within the HTML file itself.
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- The &lt;script&gt; tag can only be used to link to external JavaScript files that are inside of this repository.
+				<br>
+				<br>
+				- The hardcoded "SITE_LAST_UPDATED" const variable in universal.js must be updated manually before contributing your change to the wiki.
+				<br>
+				<br>
+				- Here is a blank template wiki page you can use to start adding content to immediately:
+				<br>
+				<br>
+				- All letters in sidebar hyperlinks (the sidebar in individual wiki pages) must be lowercase except in specific circumstances (e.g. #configuration).
+				<br>
+				<br>
+				- Tutorials for custom variants of vanilla items/features are a necessary part of wiki pages so avoid removing them.
+				<br>
+				<br>
+				- The order of the links in the sidebars of wiki pages MUST be the same order as the hidden divs on the wiki page. For example:
+				<pre><code>&lt;!-- The CORRECT order --&gt;
+. . .
+&lt;a href="#<u>item1</u>"&gt;Item 1&lt;/a&gt;
+&lt;a href="#<u>item2</u>"&gt;Item 2&lt;/a&gt;
+&lt;a href="#<u>item3</u>"&gt;Item 3&lt;/a&gt;
+. . . 
+
+. . . 
+&lt;div id="<u>item1</u>" class="wiki-page" style="display:none;"&gt;
+	&lt;hr&gt;
+	&lt;h1&gt;Item 1&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div id="<u>item2</u>" class="wiki-page" style="display:none;"&gt;
+	&lt;hr&gt;
+	&lt;h1&gt;Item 2&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div id="<u>item3</u>" class="wiki-page" style="display:none;"&gt;
+	&lt;hr&gt;
+	&lt;h1&gt;Item 3&lt;/h1&gt;
+&lt;/div&gt;
+. . .
+
+<hr>
+&lt;!-- The INCORRECT order --&gt;
+. . .
+&lt;a href="#<u>item1</u>"&gt;Item 1&lt;/a&gt;
+&lt;a href="#<u>item2</u>"&gt;Item 2&lt;/a&gt;
+&lt;a href="#<u>item3</u>"&gt;Item 3&lt;/a&gt;
+. . . 
+
+. . . 
+&lt;div id="<u>item3</u>" class="wiki-page" style="display:none;"&gt;
+	&lt;hr&gt;
+	&lt;h1&gt;Item 3&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div id="<u>item1</u>" class="wiki-page" style="display:none;"&gt;
+	&lt;hr&gt;
+	&lt;h1&gt;Item 1&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div id="<u>item2</u>" class="wiki-page" style="display:none;"&gt;
+	&lt;hr&gt;
+	&lt;h1&gt;Item 2&lt;/h1&gt;
+&lt;/div&gt;
+. . .
+</code></pre>
+				<h1>TEMPLATE GOES HERE</h1>
+				- Pages are not supposed to look like this: "... .github.io/1_12_2_forge.html" They are supposed to look like this: ... .github.io/1.12.2_forge/"
+				<br>
+				Here is a generalized folder structure of the whole website:
+				<hr>
+				
+				<h1 class="center-text">TO-DO LIST</h1>
+				- In the 1.12.2 wiki page, in the "Setting up the development environment" page, elaborate on what installation settings are needed for Java JDK 8u401 before the user installs Java JDK 8u401.
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- In this section also elaborate that the user needs to save the directory/directories that they installed the Java JDK in so it can be used further down in the tutorial.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, in the "Setting up the development environment" page, elaborate on what installation settings are needed for IntelliJ IDEA before the user installs IntelliJ IDEA.
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Maybe merge the "Setting up IntelliJ IDEA" section with the "Setting up the Forge MDK" section? Unless you can include the installation settings in the "Setting up IntelliJ IDEA" section
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, test if the "Setting up JAVA_HOME (MAY NOT BE NEEDED, NEEDS MORE TESTING)" section is needed.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, I'm not sure if I should keep, modify, or remove this line: "You should update this variable when you decide to release updates to your own mods."
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, improve the explanation of the "group" variable by figuring out what it does.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, the folder structure may be incomplete.
+				<br>
+				<br>
+				- For legacy_modding_minecraft_wiki_styles.css, I'm not sure if having a border-radius for &lt;code&gt; looks good or not. I am leaving border-radius commented for now.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page (and for any other page that may use these characters), consider replacing ├─ characters in the HTML file itself with their &...; equivalents to make this website compatible with as many devices as possible.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, figure out why the tutorial for how to run the server on the bottom of the page doesn't work at all (when I tested it, the server keeps crashing with the error "Connection reset by peer")
+				<br>
+				<br>
+				- Put this in the every wiki page somewhere (or maybe make a separate page accessed directly from the home page instead that talks about these concepts):
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- This tutorial assumes that you already know Java programming concepts. Here are the concepts that are relevant to developing Minecraft Java Edition mods):
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Polymorphism
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Events
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- . . .
+				<br>
+				<br>
+				- In the 1.12.2 Forge wiki page (and 1.7.10 special wiki page), consider replacing some or all of the quoted stuff and directory names with &lt;code&gt; or similar tags to &lt;code&gt; because even though information in the quotes needs to stand out to the reader, surrounding that information with quotes makes it inconvenient for the reader to copy the text inside of the quotes.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, implement fixes for the Common Issues and expand this section to cover more common issues that people have with the #setup wiki page and with setting up the development environment in general.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, test the "playerIn.sendMessage(new TextComponentString("Insert text here"));" to see how the message shows up in chat
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- For example, if the player says the text or the server or something else
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Once you find out, mention how it shows up in the #miscellaneous page
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, the final order of every page in the sidebar is to-be-determined.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, finish the "Language Files" page
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, finish the "Key concepts" page
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, maybe move "Making your mod's Creative tab" page to the "Items" category to make the wiki more in line with the idea that the whole wiki should be treated as a step-by-step process going from the first page all the way down to the last page.
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Also mention the "Language files" section here too since language files are relevant to the user making their first item.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, remove the "Temporary resources to continue the wiki" section once the rest of the wiki is done.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, add a page or section about making custom crafting recipes.
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Also, add a page for custom loot tables
+					  (also overriding vanilla crafting recipes, removing vanilla crafting recipes, overriding vanilla loot tables, removing vanilla loot tables)
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, add subsections in the Arrow page for custom spectral arrows and custom tipped arrows if it makes sense to do so.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, maybe expand the "Enchanted books" page to include general information on enchants instead, such as mentioning how to limit what kinds of enchants can go on items, changing behavior of vanilla enchants/enchanted books
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Example list of all topics involving enchants:
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Making your own custom enchanted books
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- How to limit what kinds of enchants can go on which items
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Changing behavior of vanilla enchants/enchanted books
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Dealing with the max level for enchants (whether the enchants are vanilla or added by mods)
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- . . .
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, the Setting up MDK section needs to be tested.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page:
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Add a page for custom item models
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Add a page for custom block models
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Add a page for custom potion effects coming from items? (inspired by this video by TurtyWurty: https://www.youtube.com/watch?v=u-lCBLEODs4&list=PLaevjqy3XufYkNu2PTTReZm0sSCshr-dW&index=12)
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Add a page for custom fluids
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Address this issue only if this is even an issue for people who only read my wiki instead of following TurtyWurty's tutorial: https://www.youtube.com/watch?v=I0ywvCoUegk&list=PLaevjqy3XufYkNu2PTTReZm0sSCshr-dW&index=40
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Add a page for item-only containers
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- An "item container" is a container that is accessed through items in the inventory rather than a placed block like a chest or furnace.
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Example: An item you hold in your hand and when you right click it you can see an extra inventory.
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Example: In the "Sophisticated Backpacks" mod you can press B to open a backpack's inventory while the backpack is in your inventory.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, finish the "Making your mod's Creative tab" page by looking at how TurtyWurty did it
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, add more sidebar pages for items/blocks from TurtyWurty's 1.12.2 tutorial and other people's tutorials (such as McJty, Cubicoder, etc)
+			</b>
+		</div>
+		
+		<br>
+		
+		<footer>
+			<p>&copy; 2026-2026 wikiformoddinglegacyminecraftjava All rights reserved.</p>
+			<p>Website first created on February 4, 2026</p>
+			<p>Website first published on February 4, 2026</p>
+			<p>Website last updated on <span id="site-last-updated"></span></p>
+		</footer>
+	</body>
+</html>
