@@ -43,9 +43,11 @@
 				- Prioritize adding missing content to the wiki over changing the style of the wiki until sufficient content is added to the wiki to warrant any stylistic changes.
 				<br>
 				<br>
-				- All CSS styling must be done in separate .css files (only the ones in this repository) and must be applied to HTML elements using classes only. This means no inline CSS and no &lt;style&gt; tags.
+				- All CSS styling must be done in separate .css files (only the ones in this repository) and must be applied to HTML elements using classes only. This means no inline CSS and no &lt;style&gt; tags. The only exceptions to this are:
 				<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;- The only exception to this is if an HTML tag itself (e.g. &lt;b&gt; for bolding text) can be used as an alternative to existing CSS code (e.g. font-weight: bold;)
+				&nbsp;&nbsp;&nbsp;&nbsp;- If an HTML tag itself (e.g. &lt;b&gt; for bolding text) can be used as an alternative to existing CSS code (e.g. font-weight: bold;)
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- The hidden &lt;div&gt; tags on individual wiki pages that are meant to separate different "pages" within the wiki page itself (search the concept of "Single-page application" (SPA) on the internet because every wiki page must be an SPA).
 				<br>
 				<br>
 				- Do not implement bootstrap. We can make all the CSS classes ourselves and the website needs to look simple.
@@ -63,6 +65,9 @@
 				<br>
 				<br>
 				- All letters in sidebar hyperlinks (the sidebar in individual wiki pages) must be lowercase except in specific circumstances (e.g. #configuration).
+				<br>
+				<br>
+				- Tutorials for custom variants of vanilla items/features are a necessary part of wiki pages so avoid removing them.
 				<br>
 				<br>
 				- The order of the links in the sidebars of wiki pages MUST be the same order as the hidden divs on the wiki page. For example:
@@ -115,9 +120,10 @@
 &lt;/div&gt;
 . . .
 </code></pre>
-				
 				<h1>TEMPLATE GOES HERE</h1>
-				
+				- Pages are not supposed to look like this: "... .github.io/1_12_2_forge.html" They are supposed to look like this: ... .github.io/1.12.2_forge/"
+				<br>
+				Here is a generalized folder structure of the whole website:
 				<hr>
 				
 				<h1 class="center-text">TO-DO LIST</h1>
@@ -196,6 +202,10 @@
 				- In the 1.12.2 wiki page, add a page or section about making custom crafting recipes.
 				<br>
 				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Also, add a page for custom loot tables
+					  (also overriding vanilla crafting recipes, removing vanilla crafting recipes, overriding vanilla loot tables, removing vanilla loot tables)
+				<br>
+				<br>
 				- In the 1.12.2 wiki page, add subsections in the Arrow page for custom spectral arrows and custom tipped arrows if it makes sense to do so.
 				<br>
 				<br>
@@ -215,6 +225,42 @@
 				<br>
 				<br>
 				- In the 1.12.2 wiki page, the Setting up MDK section needs to be tested.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page:
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Add a page for custom item models
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Add a page for custom block models
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Add a page for custom potion effects coming from items? (inspired by this video by TurtyWurty: https://www.youtube.com/watch?v=u-lCBLEODs4&list=PLaevjqy3XufYkNu2PTTReZm0sSCshr-dW&index=12)
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Add a page for custom fluids
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Address this issue only if this is even an issue for people who only read my wiki instead of following TurtyWurty's tutorial: https://www.youtube.com/watch?v=I0ywvCoUegk&list=PLaevjqy3XufYkNu2PTTReZm0sSCshr-dW&index=40
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Add a page for item-only containers
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- An "item container" is a container that is accessed through items in the inventory rather than a placed block like a chest or furnace.
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Example: An item you hold in your hand and when you right click it you can see an extra inventory.
+				<br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Example: In the "Sophisticated Backpacks" mod you can press B to open a backpack's inventory while the backpack is in your inventory.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, finish the "Making your mod's Creative tab" page by looking at how TurtyWurty did it
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, add more sidebar pages for items/blocks from TurtyWurty's 1.12.2 tutorial and other people's tutorials (such as McJty, Cubicoder, etc)
 			</b>
 		</div>
 		
