@@ -60,7 +60,161 @@
 				<br>
 				<br>
 				- Here is a blank template wiki page you can use to start adding content to immediately:
+				<br>
+				<br>
+				- All letters in sidebar hyperlinks (the sidebar in individual wiki pages) must be lowercase except in specific circumstances (e.g. #configuration).
+				<br>
+				<br>
+				- The order of the links in the sidebars of wiki pages MUST be the same order as the hidden divs on the wiki page. For example:
+				<pre><code>&lt;!-- The CORRECT order --&gt;
+. . .
+&lt;a href="#<u>item1</u>"&gt;Item 1&lt;/a&gt;
+&lt;a href="#<u>item2</u>"&gt;Item 2&lt;/a&gt;
+&lt;a href="#<u>item3</u>"&gt;Item 3&lt;/a&gt;
+. . . 
+
+. . . 
+&lt;div id="<u>item1</u>" class="wiki-page" style="display:none;"&gt;
+	&lt;hr&gt;
+	&lt;h1&gt;Item 1&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div id="<u>item2</u>" class="wiki-page" style="display:none;"&gt;
+	&lt;hr&gt;
+	&lt;h1&gt;Item 2&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div id="<u>item3</u>" class="wiki-page" style="display:none;"&gt;
+	&lt;hr&gt;
+	&lt;h1&gt;Item 3&lt;/h1&gt;
+&lt;/div&gt;
+. . .
+
+<hr>
+&lt;!-- The INCORRECT order --&gt;
+. . .
+&lt;a href="#<u>item1</u>"&gt;Item 1&lt;/a&gt;
+&lt;a href="#<u>item2</u>"&gt;Item 2&lt;/a&gt;
+&lt;a href="#<u>item3</u>"&gt;Item 3&lt;/a&gt;
+. . . 
+
+. . . 
+&lt;div id="<u>item3</u>" class="wiki-page" style="display:none;"&gt;
+	&lt;hr&gt;
+	&lt;h1&gt;Item 3&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div id="<u>item1</u>" class="wiki-page" style="display:none;"&gt;
+	&lt;hr&gt;
+	&lt;h1&gt;Item 1&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div id="<u>item2</u>" class="wiki-page" style="display:none;"&gt;
+	&lt;hr&gt;
+	&lt;h1&gt;Item 2&lt;/h1&gt;
+&lt;/div&gt;
+. . .
+</code></pre>
+				
 				<h1>TEMPLATE GOES HERE</h1>
+				
+				<hr>
+				
+				<h1 class="center-text">TO-DO LIST</h1>
+				- In the 1.12.2 wiki page, in the "Setting up the development environment" page, elaborate on what installation settings are needed for Java JDK 8u401 before the user installs Java JDK 8u401.
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- In this section also elaborate that the user needs to save the directory/directories that they installed the Java JDK in so it can be used further down in the tutorial.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, in the "Setting up the development environment" page, elaborate on what installation settings are needed for IntelliJ IDEA before the user installs IntelliJ IDEA.
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Maybe merge the "Setting up IntelliJ IDEA" section with the "Setting up the Forge MDK" section? Unless you can include the installation settings in the "Setting up IntelliJ IDEA" section
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, test if the "Setting up JAVA_HOME (MAY NOT BE NEEDED, NEEDS MORE TESTING)" section is needed.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, I'm not sure if I should keep, modify, or remove this line: "You should update this variable when you decide to release updates to your own mods."
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, improve the explanation of the "group" variable by figuring out what it does.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, the folder structure may be incomplete.
+				<br>
+				<br>
+				- For legacy_modding_minecraft_wiki_styles.css, I'm not sure if having a border-radius for &lt;code&gt; looks good or not. I am leaving border-radius commented for now.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page (and for any other page that may use these characters), consider replacing ├─ characters in the HTML file itself with their &...; equivalents to make this website compatible with as many devices as possible.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, figure out why the tutorial for how to run the server on the bottom of the page doesn't work at all (when I tested it, the server keeps crashing with the error "Connection reset by peer")
+				<br>
+				<br>
+				- Put this in the every wiki page somewhere (or maybe make a separate page accessed directly from the home page instead that talks about these concepts):
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- This tutorial assumes that you already know Java programming concepts. Here are the concepts that are relevant to developing Minecraft Java Edition mods):
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Polymorphism
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Events
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- . . .
+				<br>
+				<br>
+				- In the 1.12.2 Forge wiki page (and 1.7.10 special wiki page), consider replacing some or all of the quoted stuff and directory names with &lt;code&gt; or similar tags to &lt;code&gt; because even though information in the quotes needs to stand out to the reader, surrounding that information with quotes makes it inconvenient for the reader to copy the text inside of the quotes.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, implement fixes for the Common Issues and expand this section to cover more common issues that people have with the #setup wiki page and with setting up the development environment in general.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, test the "playerIn.sendMessage(new TextComponentString("Insert text here"));" to see how the message shows up in chat
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- For example, if the player says the text or the server or something else
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Once you find out, mention how it shows up in the #miscellaneous page
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, the final order of every page in the sidebar is to-be-determined.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, finish the "Language Files" page
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, finish the "Key concepts" page
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, maybe move "Making your mod's Creative tab" page to the "Items" category to make the wiki more in line with the idea that the whole wiki should be treated as a step-by-step process going from the first page all the way down to the last page.
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Also mention the "Language files" section here too since language files are relevant to the user making their first item.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, remove the "Temporary resources to continue the wiki" section once the rest of the wiki is done.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, add a page or section about making custom crafting recipes.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, add subsections in the Arrow page for custom spectral arrows and custom tipped arrows if it makes sense to do so.
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, maybe expand the "Enchanted books" page to include general information on enchants instead, such as mentioning how to limit what kinds of enchants can go on items, changing behavior of vanilla enchants/enchanted books
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;- Example list of all topics involving enchants:
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Making your own custom enchanted books
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- How to limit what kinds of enchants can go on which items
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Changing behavior of vanilla enchants/enchanted books
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Dealing with the max level for enchants (whether the enchants are vanilla or added by mods)
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- . . .
+				<br>
+				<br>
+				- In the 1.12.2 wiki page, the Setting up MDK section needs to be tested.
 			</b>
 		</div>
 		
