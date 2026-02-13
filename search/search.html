@@ -31,17 +31,20 @@
 		
 		<div class="information-section">
 			<h1>Search Results</h1>
+			
+			<hr>
+			
 			<div id="status"></div>
 			<div id="results"></div>
 
 			<script>
 				const PAGES_TO_INDEX = [
 					{ title: "Home", url: "/" },
-					{ title: "1.12.2 Forge wiki", url: "/1.12.2_forge/" },
-					{ title: "1.13.2 Forge wiki", url: "/1.13.2_forge/" },
-					{ title: "Contribution Guidelines and TO-DO list", url: "/contribution_guidelines/" },
-					{ title: "1.7.10 Special cases wiki", url: "/1.7.10_special/" }
-					// Add more as your wiki grows
+					{ title: "1.12.2 Forge wiki", url: "./1.12.2_forge/" },
+					{ title: "1.13.2 Forge wiki", url: "./1.13.2_forge/" },
+					{ title: "Contribution Guidelines and TO-DO list", url: "./contribution_guidelines/" },
+					{ title: "1.7.10 Special cases wiki", url: "./1.7.10_special/" }
+					// More pages go here
 				];
 
 				let INDEX = [];
@@ -85,16 +88,39 @@
 					const matches = INDEX.filter(page => page.content.includes(q));
 
 					if (matches.length === 0) {
-						resultsContainer.innerHTML = "<p>No results found.</p>";
+						resultsContainer.innerHTML = `<p>No results found for "<b>${query}</b>".</p>`;
 						return;
 					}
 
-					resultsContainer.innerHTML = matches.map(page => `
-						<div class="search-result">
-							<h2><a href="${page.url}">${page.title}</a></h2>
-							<p>(Content match found on this page)</p>
-						</div>
-					`).join("");
+					resultsContainer.innerHTML = `
+						<h2>Search results for "<b>${query}</b>"</h2>
+						<br>
+						${matches.map(page => {
+							const snippet = extractSnippet(page.content, q);
+							return `
+								<div class="search-result">
+									<h3><a href="${page.url}">${page.title}</a></h3>
+									<p>${snippet}</p>
+								</div>
+							`;
+						}).join("")}
+					`;
+				}
+				
+				function extractSnippet(text, query) {
+					const index = text.indexOf(query);
+					if (index === -1) return "";
+
+					const start = Math.max(0, index - 75);
+					const end = Math.min(text.length, index + query.length + 75);
+
+					let snippet = text.substring(start, end);
+
+					// Highlight the match
+					const regex = new RegExp(query, "gi");
+					snippet = snippet.replace(regex, match => `<mark>${match}</mark>`);
+
+					return snippet + "...";
 				}
 
 				async function init() {
@@ -104,7 +130,7 @@
 					await buildIndex();
 					performSearch(query);
 				}
-
+				
 				init();
 			</script>
 		</div>
