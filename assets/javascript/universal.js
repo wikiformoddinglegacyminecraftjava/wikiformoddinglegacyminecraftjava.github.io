@@ -11,17 +11,28 @@ document.addEventListener("DOMContentLoaded", () => {
 // I decided to move the below code to this file because every wiki page will be using this code.
 // ---------- The code below is specifically for the wiki pages themselves
 function showPageFromHash() {
-    const hash = window.location.hash.substring(1); // remove the #
+    const hash = window.location.hash.substring(1); // remove '#'
     const pages = document.querySelectorAll('.wiki-page');
 
     // Hide all pages
     pages.forEach(page => page.style.display = 'none');
 
-    // If hash matches a page ID, show it
+    // Detect search page
+    if (hash.startsWith("search:")) {
+        document.getElementById("search").style.display = "block";
+
+        const query = decodeURIComponent(hash.split(":")[1] || "").toLowerCase();
+        document.getElementById("local-search").value = query;
+
+        // Trigger search rendering
+        searchLocalWiki();
+        return;
+    }
+
+    // Normal page
     if (hash && document.getElementById(hash)) {
         document.getElementById(hash).style.display = 'block';
     } else {
-        // Default page when no hash is present
         document.getElementById('default').style.display = 'block';
     }
 }
@@ -113,20 +124,25 @@ function searchLocalWiki() {
     const resultsContainer = document.getElementById("local-search-results");
 
     if (!query) {
-        resultsContainer.innerHTML = "";
+        window.location.hash = "#default";
         return;
     }
+
+    // Update URL to include query
+    window.location.hash = `#search:${encodeURIComponent(query)}`;
 
     const pages = document.querySelectorAll(".wiki-page");
     const matches = [];
 
     pages.forEach(page => {
-        if (page.textContent.toLowerCase().includes(query)) {
-            matches.push({
-                id: page.id,
-                title: page.querySelector("h1, h2, h3")?.textContent || page.id,
-                snippet: page.textContent.substring(0, 200)
-            });
+        if (page.id !== "search") {
+            if (page.textContent.toLowerCase().includes(query)) {
+                matches.push({
+                    id: page.id,
+                    title: page.querySelector("h1, h2, h3")?.textContent || page.id,
+                    snippet: page.textContent.substring(0, 200)
+                });
+            }
         }
     });
 
@@ -143,12 +159,10 @@ function searchLocalWiki() {
     `).join("");
 }
 
+
+
 document.getElementById("local-search-button")?.addEventListener("click", searchLocalWiki);
 document.getElementById("local-search")?.addEventListener("keydown", e => {
     if (e.key === "Enter") searchLocalWiki();
 });
-
-
-
-
 // ---------- The code above is specifically for the wiki pages themselves

@@ -3,32 +3,63 @@
 <head>
     <meta charset="utf-8">
     <title>Search Results</title>
-    <link rel="stylesheet" href="assets/css/universal_styles.css">
+    <link rel="stylesheet" href="../assets/css/universal_styles.css">
 </head>
 <body>
 
 <h1>Search Results</h1>
+<div id="status"></div>
 <div id="results"></div>
 
-<script src="assets/javascript/universal.js"></script>
 <script>
-async function loadSearchResults() {
-    const params = new URLSearchParams(window.location.search);
-    const query = params.get("q")?.toLowerCase() || "";
+const PAGES_TO_INDEX = [
+    { title: "Home", url: "/" },
+    { title: "1.12.2 Forge wiki", url: "/1.12.2_forge/" },
+    { title: "1.13.2 Forge wiki", url: "/1.13.2_forge/" },
+    { title: "Contribution Guidelines and TO-DO list", url: "/contribution_guidelines/" },
+    { title: "1.7.10 Special cases wiki", url: "/1.7.10_special/" }
+    // Add more as your wiki grows
+];
 
+let INDEX = [];
+
+async function buildIndex() {
+    const statusEl = document.getElementById("status");
+    statusEl.textContent = "Building search index...";
+
+    const promises = PAGES_TO_INDEX.map(async page => {
+        try {
+            const res = await fetch(page.url);
+            const html = await res.text();
+
+            const tmp = document.createElement("div");
+            tmp.innerHTML = html;
+            const text = tmp.textContent.toLowerCase();
+
+            INDEX.push({
+                title: page.title,
+                url: page.url,
+                content: text
+            });
+        } catch (e) {
+            console.error("Failed to index", page.url, e);
+        }
+    });
+
+    await Promise.all(promises);
+    statusEl.textContent = "";
+}
+
+function performSearch(query) {
     const resultsContainer = document.getElementById("results");
+    const q = query.toLowerCase().trim();
 
-    if (!query) {
+    if (!q) {
         resultsContainer.innerHTML = "<p>No search query provided.</p>";
         return;
     }
 
-    const response = await fetch("/assets/json/search_index.json");
-    const pages = await response.json();
-
-    const matches = pages.filter(page =>
-        page.content.toLowerCase().includes(query)
-    );
+    const matches = INDEX.filter(page => page.content.includes(q));
 
     if (matches.length === 0) {
         resultsContainer.innerHTML = "<p>No results found.</p>";
@@ -38,12 +69,20 @@ async function loadSearchResults() {
     resultsContainer.innerHTML = matches.map(page => `
         <div class="search-result">
             <h2><a href="${page.url}">${page.title}</a></h2>
-            <p>${page.content.substring(0, 200)}...</p>
+            <p>(Content match found on this page)</p>
         </div>
     `).join("");
 }
 
-loadSearchResults();
+async function init() {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("q") || "";
+
+    await buildIndex();
+    performSearch(query);
+}
+
+init();
 </script>
 
 </body>
