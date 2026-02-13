@@ -30,7 +30,7 @@
 		<br>
 		
 		<div class="information-section">
-			<h1>Search Results</h1>
+			<h1 id="search-title">Search Results</h1>
 			
 			<hr>
 			
@@ -77,12 +77,16 @@
 
 				function performSearch(query) {
 					const resultsContainer = document.getElementById("results");
+					const titleEl = document.getElementById("search-title");
 					const q = query.toLowerCase().trim();
 
 					if (!q) {
+						titleEl.textContent = "Search Results";
 						resultsContainer.innerHTML = "<p>No search query provided.</p>";
 						return;
 					}
+
+					titleEl.innerHTML = `Search Results for "<b>${query}</b>"`;
 
 					const matches = INDEX.filter(page => page.content.includes(q));
 
@@ -91,35 +95,39 @@
 						return;
 					}
 
-					resultsContainer.innerHTML = `
-						<h2>Search results for "<b>${query}</b>"</h2>
-						<br>
-						${matches.map(page => {
-							const snippet = extractSnippet(page.content, q);
-							return `
-								<div class="search-result">
-									<h3><a href="${page.url}">${page.title}</a></h3>
-									<p>${snippet}</p>
-								</div>
-							`;
-						}).join("")}
-					`;
+					resultsContainer.innerHTML = matches.map(page => {
+						const snippet = extractSnippet(page.content, q);
+						return `
+							<div class="search-result">
+								<h3><a href="${page.url}">${page.title}</a></h3>
+								<p>${snippet}</p>
+							</div>
+						`;
+					}).join("");
 				}
 				
 				function extractSnippet(text, query) {
 					const index = text.indexOf(query);
 					if (index === -1) return "";
-
+					
 					const start = Math.max(0, index - 75);
 					const end = Math.min(text.length, index + query.length + 75);
-
+					
 					let snippet = text.substring(start, end);
-
+					
 					// Highlight the match
 					const regex = new RegExp(query, "gi");
 					snippet = snippet.replace(regex, match => `<mark>${match}</mark>`);
-
-					return snippet + "...";
+					
+					// Add leading ellipsis unless we are at the very start
+					if (start > 0) {
+						snippet = "..." + snippet;
+					}
+					
+					// Always add trailing ellipsis
+					snippet = snippet + "...";
+					
+					return snippet;
 				}
 
 				async function init() {

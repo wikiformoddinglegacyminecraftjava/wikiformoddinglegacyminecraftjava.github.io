@@ -1,5 +1,5 @@
 // Footer date information
-const SITE_LAST_UPDATED = "February 11, 2026";	// Update this manually before committing changes to github
+const SITE_LAST_UPDATED = "February 12, 2026";	// Update this manually before committing changes to github
 document.addEventListener("DOMContentLoaded", () => {
 	const el = document.getElementById("site-last-updated");
 	if (!el) return;
@@ -109,7 +109,7 @@ document.getElementById('wiki-search-button').addEventListener('click', searchWi
 function performGlobalSearch() {
     const query = document.getElementById("global-search")?.value.trim();
     if (!query) return;
-    window.location.href = `./search/search.html?q=${encodeURIComponent(query)}`;
+    window.location.href = "/search/search.html?q=" + encodeURIComponent(query);
 }
 
 document.getElementById("global-search-button")?.addEventListener("click", performGlobalSearch);
