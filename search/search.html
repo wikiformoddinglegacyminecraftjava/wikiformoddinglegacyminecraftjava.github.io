@@ -1,89 +1,121 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>Search Results</title>
-    <link rel="stylesheet" href="../assets/css/universal_styles.css">
-</head>
-<body>
+	<head>
+		<meta charset="utf-8">
+		<title>Search Results</title>
+		
+		<!-- Universal stylesheet for all pages -->
+		<link rel="stylesheet" href="../assets/css/universal_styles.css">
+		
+		<!-- Stylesheet for this specific page -->
+		<link rel="stylesheet" href="../assets/css/legacy_modding_minecraft_wiki_styles.css">
+		
+		<!-- Page title -->
+		<title>Search results</title>
+		
+		<!-- No favicon for now. -->
+		<link rel="icon" type="image/x-icon" href="assets/images/">
+		
+		<!-- Universal javascript for all pages -->
+		<script src="../assets/javascript/universal.js" defer></script>
+	</head>
+	<body>
+		<nav class="top-navigation-bar">
+			<a href="/">Back to the wiki home page</a>
+			<!-- If this anchor tag gets deleted the navbar disappears, so it will remain here for now. -->
+		</nav>
+		
+		<br>
+		<br>
+		<br>
+		
+		<div class="information-section">
+			<h1>Search Results</h1>
+			<div id="status"></div>
+			<div id="results"></div>
 
-<h1>Search Results</h1>
-<div id="status"></div>
-<div id="results"></div>
+			<script>
+				const PAGES_TO_INDEX = [
+					{ title: "Home", url: "/" },
+					{ title: "1.12.2 Forge wiki", url: "/1.12.2_forge/" },
+					{ title: "1.13.2 Forge wiki", url: "/1.13.2_forge/" },
+					{ title: "Contribution Guidelines and TO-DO list", url: "/contribution_guidelines/" },
+					{ title: "1.7.10 Special cases wiki", url: "/1.7.10_special/" }
+					// Add more as your wiki grows
+				];
 
-<script>
-const PAGES_TO_INDEX = [
-    { title: "Home", url: "/" },
-    { title: "1.12.2 Forge wiki", url: "/1.12.2_forge/" },
-    { title: "1.13.2 Forge wiki", url: "/1.13.2_forge/" },
-    { title: "Contribution Guidelines and TO-DO list", url: "/contribution_guidelines/" },
-    { title: "1.7.10 Special cases wiki", url: "/1.7.10_special/" }
-    // Add more as your wiki grows
-];
+				let INDEX = [];
 
-let INDEX = [];
+				async function buildIndex() {
+					const statusEl = document.getElementById("status");
+					statusEl.textContent = "Building search index...";
 
-async function buildIndex() {
-    const statusEl = document.getElementById("status");
-    statusEl.textContent = "Building search index...";
+					const promises = PAGES_TO_INDEX.map(async page => {
+						try {
+							const res = await fetch(page.url);
+							const html = await res.text();
 
-    const promises = PAGES_TO_INDEX.map(async page => {
-        try {
-            const res = await fetch(page.url);
-            const html = await res.text();
+							const tmp = document.createElement("div");
+							tmp.innerHTML = html;
+							const text = tmp.textContent.toLowerCase();
 
-            const tmp = document.createElement("div");
-            tmp.innerHTML = html;
-            const text = tmp.textContent.toLowerCase();
+							INDEX.push({
+								title: page.title,
+								url: page.url,
+								content: text
+							});
+						} catch (e) {
+							console.error("Failed to index", page.url, e);
+						}
+					});
 
-            INDEX.push({
-                title: page.title,
-                url: page.url,
-                content: text
-            });
-        } catch (e) {
-            console.error("Failed to index", page.url, e);
-        }
-    });
+					await Promise.all(promises);
+					statusEl.textContent = "";
+				}
 
-    await Promise.all(promises);
-    statusEl.textContent = "";
-}
+				function performSearch(query) {
+					const resultsContainer = document.getElementById("results");
+					const q = query.toLowerCase().trim();
 
-function performSearch(query) {
-    const resultsContainer = document.getElementById("results");
-    const q = query.toLowerCase().trim();
+					if (!q) {
+						resultsContainer.innerHTML = "<p>No search query provided.</p>";
+						return;
+					}
 
-    if (!q) {
-        resultsContainer.innerHTML = "<p>No search query provided.</p>";
-        return;
-    }
+					const matches = INDEX.filter(page => page.content.includes(q));
 
-    const matches = INDEX.filter(page => page.content.includes(q));
+					if (matches.length === 0) {
+						resultsContainer.innerHTML = "<p>No results found.</p>";
+						return;
+					}
 
-    if (matches.length === 0) {
-        resultsContainer.innerHTML = "<p>No results found.</p>";
-        return;
-    }
+					resultsContainer.innerHTML = matches.map(page => `
+						<div class="search-result">
+							<h2><a href="${page.url}">${page.title}</a></h2>
+							<p>(Content match found on this page)</p>
+						</div>
+					`).join("");
+				}
 
-    resultsContainer.innerHTML = matches.map(page => `
-        <div class="search-result">
-            <h2><a href="${page.url}">${page.title}</a></h2>
-            <p>(Content match found on this page)</p>
-        </div>
-    `).join("");
-}
+				async function init() {
+					const params = new URLSearchParams(window.location.search);
+					const query = params.get("q") || "";
 
-async function init() {
-    const params = new URLSearchParams(window.location.search);
-    const query = params.get("q") || "";
+					await buildIndex();
+					performSearch(query);
+				}
 
-    await buildIndex();
-    performSearch(query);
-}
-
-init();
-</script>
-
-</body>
+				init();
+			</script>
+		</div>
+		
+		<br>
+		
+		<footer>
+			<p>&copy; 2026-2026 wikiformoddinglegacyminecraftjava All rights reserved.</p>
+			<p>Website first created on February 4, 2026</p>
+			<p>Website first published on February 4, 2026</p>
+			<p>Website last updated on <span id="site-last-updated"></span></p>
+		</footer>
+	</body>
 </html>

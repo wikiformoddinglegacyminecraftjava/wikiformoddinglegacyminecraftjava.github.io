@@ -109,7 +109,7 @@ document.getElementById('wiki-search-button').addEventListener('click', searchWi
 function performGlobalSearch() {
     const query = document.getElementById("global-search")?.value.trim();
     if (!query) return;
-    window.location.href = `/search/search.html?q=${encodeURIComponent(query)}`;
+    window.location.href = `./search/search.html?q=${encodeURIComponent(query)}`;
 }
 
 document.getElementById("global-search-button")?.addEventListener("click", performGlobalSearch);
