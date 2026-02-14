@@ -60,27 +60,30 @@
 							const tmp = document.createElement("div");
 							tmp.innerHTML = html;
 
-							// Find all SPA pages inside this wiki
 							const spaPages = tmp.querySelectorAll(".wiki-page");
 
 							if (spaPages.length > 0) {
 								spaPages.forEach(spa => {
 									const id = spa.id;
-									const text = spa.textContent.toLowerCase();
+									const originalText = spa.textContent;
+									const lowerText = originalText.toLowerCase();
 
 									INDEX.push({
 										title: `${page.title}#${id}`,
 										url: `${page.url}#${id}`,
-										content: text
+										content: originalText,
+										contentLower: lowerText
 									});
 								});
 							} else {
-								// Normal non-SPA page
-								const text = tmp.textContent.toLowerCase();
+								const originalText = tmp.textContent;
+								const lowerText = originalText.toLowerCase();
+
 								INDEX.push({
 									title: page.title,
 									url: page.url,
-									content: text
+									content: originalText,
+									contentLower: lowerText
 								});
 							}
 						} catch (e) {
@@ -105,7 +108,7 @@
 
 					titleEl.innerHTML = `Search Results for "${query}"`;
 
-					const matches = INDEX.filter(page => page.content.includes(q));
+					const matches = INDEX.filter(page => page.contentLower.includes(q));
 
 					if (matches.length === 0) {
 						resultsContainer.innerHTML = `<p>No results found for "${query}".</p>`;
@@ -113,38 +116,64 @@
 					}
 
 					resultsContainer.innerHTML = matches.map(page => {
-						const snippet = extractSnippet(page.content, q);
+						const snippets = extractAllSnippets(page.content, q);
+
 						return `
 							<div class="search-result">
 								<h3><a href="${page.url}">${page.title}</a></h3>
-								<p>${snippet}</p>
+								${snippets.map(s => `<p>${s}</p>`).join("")}
 							</div>
 						`;
 					}).join("");
 				}
 				
-				function extractSnippet(text, query) {
-					const index = text.indexOf(query);
+				function extractSnippet(originalText, queryLower) {
+					const lowerText = originalText.toLowerCase();
+					const index = lowerText.indexOf(queryLower);
 					if (index === -1) return "";
-					
+
 					const start = Math.max(0, index - 75);
-					const end = Math.min(text.length, index + query.length + 75);
-					
-					let snippet = text.substring(start, end);
-					
-					// Highlight the match
-					const regex = new RegExp(query, "gi");
+					const end = Math.min(originalText.length, index + queryLower.length + 75);
+
+					let snippet = originalText.substring(start, end);
+
+					// Highlight matches (case-insensitive)
+					const regex = new RegExp(queryLower, "gi");
 					snippet = snippet.replace(regex, match => `<mark>${match}</mark>`);
-					
-					// Add leading ellipsis unless we are at the very start
-					if (start > 0) {
-						snippet = "..." + snippet;
-					}
-					
-					// Always add trailing ellipsis
+
+					if (start > 0) snippet = "..." + snippet;
 					snippet = snippet + "...";
-					
+
 					return snippet;
+				}
+				
+				function extractAllSnippets(originalText, queryLower) {
+					const lowerText = originalText.toLowerCase();
+					const snippets = [];
+					let index = 0;
+
+					while (true) {
+						index = lowerText.indexOf(queryLower, index);
+						if (index === -1) break;
+
+						const start = Math.max(0, index - 75);
+						const end = Math.min(originalText.length, index + queryLower.length + 75);
+
+						let snippet = originalText.substring(start, end);
+
+						// Highlight ALL occurrences
+						const regex = new RegExp(queryLower, "gi");
+						snippet = snippet.replace(regex, match => `<mark>${match}</mark>`);
+
+						if (start > 0) snippet = "..." + snippet;
+						snippet = snippet + "...";
+
+						snippets.push(snippet);
+
+						index += queryLower.length; // move past this match
+					}
+
+					return snippets;
 				}
 
 				async function init() {
