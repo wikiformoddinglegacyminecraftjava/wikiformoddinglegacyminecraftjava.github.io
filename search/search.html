@@ -29,6 +29,13 @@
 		<br>
 		<br>
 		
+		<div class="wiki-search">
+			<input type="text" id="global-search" placeholder="Search the whole website" class="wiki-search-bar">
+			<button id="global-search-button">Search</button>
+		</div>
+		
+		<br>
+		
 		<div class="information-section">
 			<h1 id="search-title">Search Results</h1>
 			
@@ -76,7 +83,8 @@
 									});
 								});
 							} else {
-								const originalText = tmp.textContent;
+								const spaHTML = spa.innerHTML;
+								const originalText = spaHTML.replace(/<[^>]*>/g, " ");
 								const lowerText = originalText.toLowerCase();
 
 								INDEX.push({
@@ -156,6 +164,7 @@
 						index = lowerText.indexOf(queryLower, index);
 						if (index === -1) break;
 
+						// Expand snippet window
 						const start = Math.max(0, index - 75);
 						const end = Math.min(originalText.length, index + queryLower.length + 75);
 
@@ -165,12 +174,14 @@
 						const regex = new RegExp(queryLower, "gi");
 						snippet = snippet.replace(regex, match => `<mark>${match}</mark>`);
 
+						// Add ellipses
 						if (start > 0) snippet = "..." + snippet;
-						snippet = snippet + "...";
+						if (end < originalText.length) snippet = snippet + "...";
+						else snippet = snippet + "..."; // force trailing ellipsis
 
 						snippets.push(snippet);
 
-						index += queryLower.length; // move past this match
+						index += queryLower.length;
 					}
 
 					return snippets;
