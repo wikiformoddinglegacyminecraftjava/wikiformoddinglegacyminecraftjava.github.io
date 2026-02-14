@@ -40,9 +40,9 @@
 			<script>
 				const PAGES_TO_INDEX = [
 					{ title: "Home", url: "/" },
+					{ title: "1.7.10 Special cases wiki", url: "/1.7.10_special/" },
 					{ title: "1.12.2 Forge wiki", url: "/1.12.2_forge/" },
-					{ title: "Contribution Guidelines and TO-DO list", url: "/contribution_guidelines/" },
-					{ title: "1.7.10 Special cases wiki", url: "/1.7.10_special/" }
+					{ title: "Contribution Guidelines", url: "/contribution_guidelines/" }
 					// More pages go here
 				];
 
@@ -59,13 +59,30 @@
 
 							const tmp = document.createElement("div");
 							tmp.innerHTML = html;
-							const text = tmp.textContent.toLowerCase();
 
-							INDEX.push({
-								title: page.title,
-								url: page.url,
-								content: text
-							});
+							// Find all SPA pages inside this wiki
+							const spaPages = tmp.querySelectorAll(".wiki-page");
+
+							if (spaPages.length > 0) {
+								spaPages.forEach(spa => {
+									const id = spa.id;
+									const text = spa.textContent.toLowerCase();
+
+									INDEX.push({
+										title: `${page.title}#${id}`,
+										url: `${page.url}#${id}`,
+										content: text
+									});
+								});
+							} else {
+								// Normal non-SPA page
+								const text = tmp.textContent.toLowerCase();
+								INDEX.push({
+									title: page.title,
+									url: page.url,
+									content: text
+								});
+							}
 						} catch (e) {
 							console.error("Failed to index", page.url, e);
 						}
@@ -86,12 +103,12 @@
 						return;
 					}
 
-					titleEl.innerHTML = `Search Results for "<b>${query}</b>"`;
+					titleEl.innerHTML = `Search Results for "${query}"`;
 
 					const matches = INDEX.filter(page => page.content.includes(q));
 
 					if (matches.length === 0) {
-						resultsContainer.innerHTML = `<p>No results found for "<b>${query}</b>".</p>`;
+						resultsContainer.innerHTML = `<p>No results found for "${query}".</p>`;
 						return;
 					}
 

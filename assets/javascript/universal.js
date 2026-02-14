@@ -100,11 +100,6 @@ document.getElementById('wiki-search-button').addEventListener('click', searchWi
 */
 
 
-
-
-
-
-
 // GLOBAL SEARCH
 function performGlobalSearch() {
     const query = document.getElementById("global-search")?.value.trim();
