@@ -83,8 +83,8 @@
 									});
 								});
 							} else {
-								const spaHTML = spa.innerHTML;
-								const originalText = spaHTML.replace(/<[^>]*>/g, " ");
+								// Non-SPA page: strip HTML tags from the full HTML
+								const originalText = html.replace(/<[^>]*>/g, " ");
 								const lowerText = originalText.toLowerCase();
 
 								INDEX.push({
