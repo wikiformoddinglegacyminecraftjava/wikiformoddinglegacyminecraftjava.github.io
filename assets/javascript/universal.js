@@ -1,5 +1,5 @@
 // Footer date information
-const SITE_LAST_UPDATED = "February 12, 2026";	// Update this manually before committing changes to github
+const SITE_LAST_UPDATED = "February 14, 2026";	// Update this manually before committing changes to github
 document.addEventListener("DOMContentLoaded", () => {
 	const el = document.getElementById("site-last-updated");
 	if (!el) return;
@@ -115,43 +115,90 @@ document.getElementById("global-search")?.addEventListener("keydown", e => {
 
 // LOCAL SEARCH (wiki SPA only)
 function searchLocalWiki() {
-    const query = document.getElementById("local-search").value.toLowerCase().trim();
+    const queryInput = document.getElementById("local-search");
     const resultsContainer = document.getElementById("local-search-results");
+    const query = queryInput.value.trim();
+    const queryLower = query.toLowerCase();
 
     if (!query) {
         window.location.hash = "#default";
         return;
     }
 
-    // Update URL to include query
+    // Update URL
     window.location.hash = `#search:${encodeURIComponent(query)}`;
 
+    // Update title
+    const titleEl = document.querySelector("#search h1");
+    if (titleEl) {
+        titleEl.textContent = `Search Results for "${query}"`;
+    }
+
     const pages = document.querySelectorAll(".wiki-page");
-    const matches = [];
+    const results = [];
 
     pages.forEach(page => {
-        if (page.id !== "search") {
-            if (page.textContent.toLowerCase().includes(query)) {
-                matches.push({
-                    id: page.id,
-                    title: page.querySelector("h1, h2, h3")?.textContent || page.id,
-                    snippet: page.textContent.substring(0, 200)
-                });
-            }
-        }
+        if (page.id === "search") return; // skip search page itself
+
+        const html = page.innerHTML;
+        const originalText = html.replace(/<[^>]*>/g, " ");
+        const lowerText = originalText.toLowerCase();
+
+        if (!lowerText.includes(queryLower)) return;
+
+        const snippets = extractAllLocalSnippets(originalText, queryLower);
+
+        results.push({
+            id: page.id,
+            title: page.querySelector("h1, h2, h3")?.textContent || page.id,
+            snippets
+        });
     });
 
-    if (matches.length === 0) {
+    if (results.length === 0) {
         resultsContainer.innerHTML = "<p>No results found.</p>";
         return;
     }
 
-    resultsContainer.innerHTML = matches.map(m => `
+    resultsContainer.innerHTML = results.map(r => `
         <div class="local-result">
-            <h3><a href="#${m.id}">${m.title}</a></h3>
-            <p>${m.snippet}...</p>
+            <h3><a href="#${r.id}">${r.title}</a></h3>
+            ${r.snippets.map(s => `<p>${s}</p>`).join("")}
         </div>
     `).join("");
+}
+
+
+// Extract ALL snippets
+function extractAllLocalSnippets(originalText, queryLower) {
+    const lowerText = originalText.toLowerCase();
+    const snippets = [];
+    let index = 0;
+
+    while (true) {
+        index = lowerText.indexOf(queryLower, index);
+        if (index === -1) break;
+
+        const start = Math.max(0, index - 75);
+        const end = Math.min(originalText.length, index + queryLower.length + 75);
+
+        let snippet = originalText.substring(start, end);
+
+        // Highlight all occurrences
+        const regex = new RegExp(queryLower, "gi");
+        snippet = snippet.replace(regex, match => `<mark>${match}</mark>`);
+
+        // Add ellipses
+        if (start > 0) snippet = "..." + snippet;
+        if (end < originalText.length) snippet = snippet + "...";
+        else snippet = snippet + "..."; // force trailing ellipsis
+
+        snippets.push(snippet);
+
+        index += queryLower.length;
+    }
+
+    return snippets;
 }
 
 
