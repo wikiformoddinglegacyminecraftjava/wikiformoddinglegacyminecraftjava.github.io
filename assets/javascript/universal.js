@@ -114,6 +114,12 @@ document.getElementById("global-search")?.addEventListener("keydown", e => {
 
 
 // LOCAL SEARCH (wiki SPA only)
+function normalizeText(text) {
+    return text
+        .replace(/\s+/g, " ")   // collapse all whitespace
+        .trim();                // remove leading/trailing whitespace
+}
+
 function searchLocalWiki() {
     const queryInput = document.getElementById("local-search");
     const resultsContainer = document.getElementById("local-search-results");
@@ -141,7 +147,9 @@ function searchLocalWiki() {
         if (page.id === "search") return; // skip search page itself
 
         const html = page.innerHTML;
-        const originalText = html.replace(/<[^>]*>/g, " ");
+        const originalText = normalizeText(
+			html.replace(/<[^>]*>/g, " ")
+		);
         const lowerText = originalText.toLowerCase();
 
         if (!lowerText.includes(queryLower)) return;
@@ -188,10 +196,11 @@ function extractAllLocalSnippets(originalText, queryLower) {
         const regex = new RegExp(queryLower, "gi");
         snippet = snippet.replace(regex, match => `<mark>${match}</mark>`);
 
-        // Add ellipses
+        // Add leading ellipsis only if snippet is NOT at the start
         if (start > 0) snippet = "..." + snippet;
+
+        // Add trailing ellipsis only if snippet is NOT at the end
         if (end < originalText.length) snippet = snippet + "...";
-        else snippet = snippet + "..."; // force trailing ellipsis
 
         snippets.push(snippet);
 

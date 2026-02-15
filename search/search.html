@@ -84,7 +84,9 @@
 								});
 							} else {
 								// Non-SPA page: strip HTML tags from the full HTML
-								const originalText = html.replace(/<[^>]*>/g, " ");
+								const originalText = normalizeText(
+									html.replace(/<[^>]*>/g, " ")
+								);
 								const lowerText = originalText.toLowerCase();
 
 								INDEX.push({
