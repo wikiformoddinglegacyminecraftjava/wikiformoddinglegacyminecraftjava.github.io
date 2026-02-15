@@ -114,6 +114,12 @@ document.getElementById("global-search")?.addEventListener("keydown", e => {
 
 
 // LOCAL SEARCH (wiki SPA only)
+function decodeEntities(str) {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = str;
+    return txt.value;
+}
+
 function normalizeText(text) {
     return text
         .replace(/\s+/g, " ")   // collapse all whitespace
@@ -147,9 +153,17 @@ function searchLocalWiki() {
         if (page.id === "search") return; // skip search page itself
 
         const html = page.innerHTML;
-        const originalText = normalizeText(
-			html.replace(/<[^>]*>/g, " ")
-		);
+
+		// Fixes a few bugs such as:
+		// - Searching for < or > returns no results while searching for &lt; or &gt; returns < or >
+		// - The "..." string would not always show up correctly in snippets of text in search results.
+		// Strip tags
+		let originalText = html.replace(/<[^>]*>/g, " ");
+		// Decode HTML entities (&lt; → <)
+		originalText = decodeEntities(originalText);
+		// Normalize whitespace
+		originalText = normalizeText(originalText);
+		
         const lowerText = originalText.toLowerCase();
 
         if (!lowerText.includes(queryLower)) return;
