@@ -120,13 +120,158 @@
 &lt;/div&gt;
 . . .
 </code></pre>
-				<h1>TEMPLATE GOES HERE</h1>
-				- Pages are not supposed to look like this: "... .github.io/1_12_2_forge.html" They are supposed to look like this: ... .github.io/1.12.2_forge/"
+				
+				<hr>
+				
+				<h1 class="center-text">TEMPLATE FOR MAKING YOUR OWN WIKI PAGE</h1>
+				<u>HOW TO USE THE TEMPLATE:</u>
+				<ol>
+					<li>
+						In your local copy of the repository, copy the template_wiki_page folder and paste it in the root of the local repository.
+					</li>
+					<li>
+						Rename the copy of the template_wiki_page folder to the page you want to create.
+						<ol>
+							<li>
+								OFFICIAL FORMAT FOR FOLDER NAMES: &lt;minecraft_version&gt;_&lt;modloader/other&gt;
+							</li>
+							<li>
+								EXAMPLE FOLDER NAME: 1.12.2_forge
+							</li>
+						</ol>
+					</li>
+					<li>
+						Open the renamed template folder.
+					</li>
+					<li>
+						Begin adding content to the template by using a text editor to open HTML files.
+					</li>
+					<li>
+						If you create a new wiki page you need to create a new css file AND a new javascript file for that page.
+					</li>
+					<li>
+						If you want to use < or > you need to:
+						<code>
+							Replace < with &lt; in the HTML file.
+							<br>
+							Replace > with &gt; in the HTML file
+						</code>
+					</li>
+				</ol>
+				
+				URL to template page: https://wikiformoddinglegacyminecraftjava.github.io/template_wiki_page
 				<br>
-				Here is a generalized folder structure of the whole website:
+				GitHub repository URL to template page: https://github.com/wikiformoddinglegacyminecraftjava/wikiformoddinglegacyminecraftjava.github.io/tree/main/template_wiki_page
+				<br>
+				<br>
+				Every wiki page is a <u>Single Page Application</u> (SPA).
+				<br>
+				<br>
+				When working on a "page" inside of a wiki SPA, you need to:
+				<ol>
+					<li>
+						Add a hyperlink to each "page" in the sidebar. Example:
+						<code>
+							&lt;a href="#page_href_name"&gt;Temporary placeholder list item&lt;/a&gt;
+						</code>
+						<br>
+					</li>
+					<li>
+						Make your own hidden div where all the "page" content will go. Example:
+						<pre><code>&lt;div id="page_href_name" class="wiki-page" style="display:none;"&gt;
+	&lt;hr&gt;
+	&lt;h1&gt;Page name&lt;/h1&gt;
+&lt;/div&gt;
+</code></pre>
+					</li>
+					<li>
+						Edit the inside of the div to add the content to the "page". Example:
+						<pre><code>&lt;div id="page_href_name" class="wiki-page" style="display:none;"&gt;
+	&lt;hr&gt;
+	&lt;h1&gt;Page name&lt;/h1&gt;
+	
+	"Page" content goes here.
+&lt;/div&gt;
+</code></pre>
+					</li>
+					<li>
+						Place each div you make in the correct place in the wiki page HTML file.
+					</li>
+					<li>
+						You can test any work-in-progress "page" by clicking on it on the sidebar and refreshing the page any time you make any changes.
+					</li>
+				</ol>
+				
+				<b><i><u>
+					THE TEMPLATE IS CURRENTLY A WORK IN PROGRESS BUT IT IS ALREADY IN A USABLE STATE.
+				</b></i></u>
+				
+				<br>
+				<br>
+				
+				Here is an example of a generalized folder structure of the whole website:
+				<code>
+					Repository for this webiste
+					<br>
+					├─ 1.12.2_forge
+					<br>
+					│&nbsp;&nbsp;└─ index.html
+					<br>
+					├─ 1.7.10_special
+					<br>
+					│&nbsp;&nbsp;└─ index.html
+					<br>
+					├─ assets
+					<br>
+					│&nbsp;&nbsp;├─ css
+					<br>
+					│&nbsp;&nbsp;│&nbsp;&nbsp;├─ 1_12_2_forge_wiki.css
+					<br>
+					│&nbsp;&nbsp;│&nbsp;&nbsp;├─ 1_7_10_special_wiki.css
+					<br>
+					│&nbsp;&nbsp;│&nbsp;&nbsp;├─ legacy_modding_minecraft_wiki_styles.css
+					<br>
+					│&nbsp;&nbsp;│&nbsp;&nbsp;└─ universal_styles.css
+					<br>
+					│&nbsp;&nbsp;├─ images
+					<br>
+					│&nbsp;&nbsp;│&nbsp;&nbsp;├─ image
+					<br>
+					│&nbsp;&nbsp;│&nbsp;&nbsp;└─ Other image files go in this folder.
+					<br>
+					│&nbsp;&nbsp;└─ javascript
+					<br>
+					│&nbsp;&nbsp;│&nbsp;&nbsp;├─ 1_12_2_forge_wiki.js
+					<br>
+					│&nbsp;&nbsp;│&nbsp;&nbsp;├─ 1_7_10_special_wiki.js
+					<br>
+					│&nbsp;&nbsp;│&nbsp;&nbsp;└─ universal.js
+					<br>
+					├─ README.md
+					<br>
+					└─ index.html
+				</code>
+				<br>
+				Page URLs are not supposed to look like this: <u>wikiformoddinglegacyminecraftjava.github.io/1_12_2_forge.html</u>
+				<br>
+				They are supposed to look like this: <u>wikiformoddinglegacyminecraftjava.github.io/1.12.2_forge/</u>
+				<br>
+				<br>
+				That is why the folder structure above has <u>/page/index.html</u> and NOT <u>page.html</u>
+				<br>
+				<br>
+				Repository:
+				<br>
+				<u>/page/index.html</u> ----------&gt; <u>website.github.io/page</u> CORRECT
+				<br>
+				<u>page.html</u> ----------&gt; <u>website.github.io/page.html</u> NOT CORRECT
+				
 				<hr>
 				
 				<h1 class="center-text">TO-DO LIST</h1>
+				- Fix bug in the template page when searching for text that comes after "Method 1 (using . . ." (may be an issue with local SPA search functionality in universal.js instead of an issue with the template page)
+				<br>
+				<br>
 				- In the 1.12.2 wiki page, in the "Setting up the development environment" page, elaborate on what installation settings are needed for Java JDK 8u401 before the user installs Java JDK 8u401.
 				<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;- In this section also elaborate that the user needs to save the directory/directories that they installed the Java JDK in so it can be used further down in the tutorial.

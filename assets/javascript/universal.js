@@ -1,5 +1,5 @@
 // Footer date information
-const SITE_LAST_UPDATED = "February 15, 2026";	// Update this manually before committing changes to github
+const SITE_LAST_UPDATED = "February 16, 2026";	// Update this manually before committing changes to github
 document.addEventListener("DOMContentLoaded", () => {
 	const el = document.getElementById("site-last-updated");
 	if (!el) return;
@@ -65,6 +65,7 @@ window.addEventListener('hashchange', () => {
 
 // For searching the wiki
 // LOCAL SEARCH (wiki SPA only)
+/* Keep in mind the code below is not very good and needs a lot of improvements. */
 function decodeEntities(str) {
     const txt = document.createElement("textarea");
     txt.innerHTML = str;
@@ -94,7 +95,7 @@ function searchLocalWiki() {
     // Update title
     const titleEl = document.querySelector("#search h1");
     if (titleEl) {
-        titleEl.textContent = `Search Results for "${query}"`;
+        titleEl.textContent = `Search results for "${query}"`;
     }
 	
     const pages = document.querySelectorAll(".wiki-page");
