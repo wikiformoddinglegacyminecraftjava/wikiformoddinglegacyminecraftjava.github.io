@@ -152,6 +152,7 @@
 					<a href="#">Temporary placeholder list item</a>
 					<a href="#">Temporary placeholder list item</a>
 					<a href="#">Temporary placeholder list item</a>
+					<a href="#">NBT Tags</a>
 					<a href="#">Adding a license to your mod</a>
 					<a href="#">Configuration files</a>
 					<a href="#language_files">Language files</a>
@@ -390,13 +391,13 @@
 							</li>
 							<li>
 								Open the "build.gradle" file inside of IntelliJ IDEA on the left side by double clicking on it. Then copy and paste this code onto the very bottom of "build.gradle", then press CTRL+S to save the change:
-								<!-- <pre> retains the whitespace for proper indentation and the line below is designed to prevent an extra blank newline from being on top of a highlighted selection of the entire code below. -->
-								<pre><code>sourceSets {
+								<!-- <pre class="pre-overflow-fix"> retains the whitespace for proper indentation and the line below is designed to prevent an extra blank newline from being on top of a highlighted selection of the entire code below. -->
+								<pre class="pre-overflow-fix"><code class="styled-code">sourceSets {
 	main {
 		output.resourcesDir = output.classesDir
 	}
 }</code></pre>
-								<!-- DO NOT CHANGE THE INDENTS OF THE ABOVE CODE. The <pre> tag will autmatically move the code based on any indents or whitespaces placed within <pre>, so unfortunately the above code needs to look exactly as it does in order to display properly on the webpage. -->
+								<!-- DO NOT CHANGE THE INDENTS OF THE ABOVE CODE. The <pre class="pre-overflow-fix"> tag will autmatically move the code based on any indents or whitespaces placed within <pre class="pre-overflow-fix">, so unfortunately the above code needs to look exactly as it does in order to display properly on the webpage. -->
 								This code is meant to fix some texture bugs that may occur when debugging your mod.
 							</li>
 							<li>
@@ -445,7 +446,7 @@
 						<br>
 						<br>
 						
-						<code>
+						<code class="styled-code">
 							src/main
 							<br>
 							└─ java
@@ -467,7 +468,7 @@
 						<br>
 						<br>
 						
-						<code>
+						<code class="styled-code">
 							src/main
 							<br>
 							└─ java
@@ -478,7 +479,7 @@
 						<br>
 						
 						If you finished the "Setting up the Forge MDK" tutorial then you should see a file called "mcmod.info" in "src/main/resources". This file contains information of your mod that players will see in-game when they view your mod from the in-game Mods button. By default it should look like this:
-						<pre><code>[
+						<pre class="pre-overflow-fix"><code class="styled-code">[
 {
 	"modid": "examplemod",
 	"name": "Example Mod",
@@ -501,7 +502,7 @@
 						
 						If you finished the "Setting up the Forge MDK" tutorial then you should see a file called "pack.mcmeta" in "src/main/resources". By default it should look like the code below. If for some reason you don't see this file, then create the file in "src/main/resources". Then copy the below code into "pack.mcmeta" and press CTRL+S to save the file.
 						<br>
-						<pre><code>{
+						<pre class="pre-overflow-fix"><code class="styled-code">{
 	"pack": {
 		"description": "examplemod resources",
 		"pack_format": 3,
@@ -515,7 +516,7 @@
 						<br>
 						<br>
 						
-						<code>
+						<code class="styled-code">
 							src/main
 							<br>
 							├─ java
@@ -691,7 +692,7 @@
 						
 						The code below shows everything that is possible in language files.
 						
-						<pre><code># Items, Armor, Tools
+						<pre class="pre-overflow-fix"><code class="styled-code"># Items, Armor, Tools
 item.item_name.name=Item name
 
 # Fluids
@@ -716,7 +717,7 @@ generator.world_type_name=World Type name
 enchantment.enchantment_name=Enchantment name
 </code></pre>
 						Here is an explanation of everything you see above:
-						<pre><code># This is a comment.
+						<pre class="pre-overflow-fix"><code class="styled-code"># This is a comment.
 
 
 # Example using an item
@@ -754,13 +755,16 @@ itemGroup.creativemodemodtab=Creative Mode Mod Tab
 						How to have your mod send a message in chat: "playerIn.sendMessage(new TextComponentString("Insert text here"));"
 						<br>
 						Example usage:
-						<pre><code>. . .
+						<pre class="pre-overflow-fix"><code class="styled-code">. . .
 if(exampleEvent == true) {
 	. . .
 	playerIn.sendMessage(new TextComponentString("Insert text here"));
 	. . .
 }
 . . .</code></pre>
+					
+					<br>
+					If a mod is open source you can look at its code to see how it works and apply that knowledge to your mod
 					</div>
 					
 					<div id="troubleshooting" class="wiki-page" style="display:none;">

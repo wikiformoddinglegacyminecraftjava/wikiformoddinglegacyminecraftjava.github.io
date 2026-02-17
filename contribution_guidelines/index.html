@@ -71,7 +71,7 @@
 				<br>
 				<br>
 				- The order of the links in the sidebars of wiki pages MUST be the same order as the hidden divs on the wiki page. For example:
-				<pre><code>&lt;!-- The CORRECT order --&gt;
+				<pre class="pre-overflow-fix"><code class="styled-code">&lt;!-- The CORRECT order --&gt;
 . . .
 &lt;a href="#<u>item1</u>"&gt;Item 1&lt;/a&gt;
 &lt;a href="#<u>item2</u>"&gt;Item 2&lt;/a&gt;
@@ -151,7 +151,7 @@
 					</li>
 					<li>
 						If you want to use < or > you need to:
-						<code>
+						<code class="styled-code">
 							Replace < with &lt; in the HTML file.
 							<br>
 							Replace > with &gt; in the HTML file
@@ -171,14 +171,14 @@
 				<ol>
 					<li>
 						Add a hyperlink to each "page" in the sidebar. Example:
-						<code>
+						<code class="styled-code">
 							&lt;a href="#page_href_name"&gt;Temporary placeholder list item&lt;/a&gt;
 						</code>
 						<br>
 					</li>
 					<li>
 						Make your own hidden div where all the "page" content will go. Example:
-						<pre><code>&lt;div id="page_href_name" class="wiki-page" style="display:none;"&gt;
+						<pre class="pre-overflow-fix"><code class="styled-code">&lt;div id="page_href_name" class="wiki-page" style="display:none;"&gt;
 	&lt;hr&gt;
 	&lt;h1&gt;Page name&lt;/h1&gt;
 &lt;/div&gt;
@@ -186,7 +186,7 @@
 					</li>
 					<li>
 						Edit the inside of the div to add the content to the "page". Example:
-						<pre><code>&lt;div id="page_href_name" class="wiki-page" style="display:none;"&gt;
+						<pre class="pre-overflow-fix"><code class="styled-code">&lt;div id="page_href_name" class="wiki-page" style="display:none;"&gt;
 	&lt;hr&gt;
 	&lt;h1&gt;Page name&lt;/h1&gt;
 	
@@ -210,7 +210,7 @@
 				<br>
 				
 				Here is an example of a generalized folder structure of the whole website:
-				<code>
+				<code class="styled-code">
 					Repository for this webiste
 					<br>
 					├─ 1.12.2_forge
@@ -241,11 +241,11 @@
 					<br>
 					│&nbsp;&nbsp;└─ javascript
 					<br>
-					│&nbsp;&nbsp;│&nbsp;&nbsp;├─ 1_12_2_forge_wiki.js
+					│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ 1_12_2_forge_wiki.js
 					<br>
-					│&nbsp;&nbsp;│&nbsp;&nbsp;├─ 1_7_10_special_wiki.js
+					│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ 1_7_10_special_wiki.js
 					<br>
-					│&nbsp;&nbsp;│&nbsp;&nbsp;└─ universal.js
+					│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ universal.js
 					<br>
 					├─ README.md
 					<br>

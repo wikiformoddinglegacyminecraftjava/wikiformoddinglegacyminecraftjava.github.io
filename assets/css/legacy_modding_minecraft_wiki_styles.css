@@ -110,11 +110,12 @@ html {
   background-color: #dddddd;
 }
 
-pre {
+/* Prevents <pre> from forcing overflowing to the right side of wiki pages */
+.pre-overflow-fix {
 	white-space: pre-wrap;
 }
 
-code {
+.styled-code {
 	border: 1px solid black;
 	/*
 	border-radius: 5px;
