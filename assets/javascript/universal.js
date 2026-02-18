@@ -1,35 +1,3 @@
-// Footer date information
-/*
-const SITE_LAST_UPDATED = "February 16, 2026";	// Update this manually before committing changes to github
-document.addEventListener("DOMContentLoaded", () => {
-	const el = document.getElementById("site-last-updated");
-	if (!el) return;
-	
-	el.textContent = SITE_LAST_UPDATED;
-});
-*/
-
-// Updated footer date information
-/*
-document.addEventListener("DOMContentLoaded", () => {
-    const el = document.getElementById("site-last-updated");
-    if (!el) return;
-	
-    // First time using Jekyll in this website
-    const UTCDate = new Date(el.textContent);
-	
-	el.textContent = UTCDate.toLocaleDateString("en-US", {
-		timeZone: "UTC", // I learned that if this line is deleted, the displayed date will be whatever timezone the reader's browser is in instead of UTC.
-		year: "numeric",
-		month: "long",
-		day: "numeric"
-	});
-});
-*/
-
-
-
-// I decided to move the below code to this file because every wiki page will be using this code.
 // ---------- The code below is specifically for the wiki pages themselves
 // Switching between different "pages" within each wiki SPA
 function showPageFromHash() {
