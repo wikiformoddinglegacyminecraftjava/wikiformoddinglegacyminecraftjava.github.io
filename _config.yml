@@ -1,0 +1,2 @@
+# The line below is meant to fix the issue of the "Website last updated on . . ." Jekyll not displaying properly.
+markdown: kramdown
