@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 */
 
 // Updated footer date information
+/*
 document.addEventListener("DOMContentLoaded", () => {
     const el = document.getElementById("site-last-updated");
     if (!el) return;
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		day: "numeric"
 	});
 });
+*/
 
 
 
