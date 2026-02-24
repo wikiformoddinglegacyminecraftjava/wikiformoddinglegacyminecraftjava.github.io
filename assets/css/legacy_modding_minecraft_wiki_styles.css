@@ -128,3 +128,11 @@ html {
 .display-inline {
 	display: inline;
 }
+
+.xmp-fix {
+	display: inline;
+	font-family: inherit;
+	/* This is an alternative option.
+	font-family: initial;
+	*/
+}
