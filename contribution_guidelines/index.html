@@ -43,6 +43,36 @@
 				- All changes made to the wiki must be approved by me (https://github.com/UEMxMDE/ the owner of this repository and organization) to keep things organized.
 				<br>
 				<br>
+				- <u>PRIVACY CONCERN</u>: Make sure that when you are pushing a commit to this repository that you are hiding your email address. If you don't, then your GitHub account's email address will be visible to ANYONE that visits your commit URLs and adds ".patch" or ".diff" to the end of the commit URLs. Example: <u>https://stackoverflow.com/questions/42957392/how-to-see-contributors-email-address-on-git-commit-chain</u>
+				<br>
+				<u>There are 2 things you must do:</u>
+				<br>
+				1. Login to your GitHub account and go here: https://github.com/settings/emails then enable "Keep my email addresses private". This will make all your commits that you contribute from your web browser use your noreply GitHub address instead of your actual email address. You should enable "Block command line pushes that expose my email" as well.
+				<br>
+				When I mentioned "contribute from your web browser" earlier, I mean the two options below. <u>Do not do the two options below unless you have followed the above instructions (bullet point #1).</u>
+				<br>
+				- The repository URL -&gt; Add file -&gt; Create new file -&gt; Type file contents and file name -&gt; Commit changes
+				<br>
+				- The repository URL -&gt; Add file -&gt; Upload files -&gt; Drag and drop your files -&gt; Commit changes
+				<br>
+				2. If you are contributing from a local git repository, then you must change your --global user.email to your noreply GitHub address to keep all your commits anonymous. Here are the steps to do this:
+				<ol>
+					<li>
+						Log in to your GitHub account
+					</li>
+					<li>
+						Visit this page: https://github.com/settings/emails
+					</li>
+					<li>
+						Copy your noreply GitHub address. It should look something like this: 12345678+yourusername@users.noreply.github.com
+					</li>
+					<li>
+						Open git bash on the PC with your local git copy of this repository and enter this command: "git config --global user.email &lt;12345678+yourusername@users.noreply.github.com&gt;"
+					</li>
+					<li>
+						You can now push commits to the repository without exposing your email address in your commits.
+					</li>
+				</ol>
 				- The copyright in the footer is a temporary placeholder until I can think of a better license for this wiki OR if I decide to leave the license as it is.
 				<br>
 				<br>
