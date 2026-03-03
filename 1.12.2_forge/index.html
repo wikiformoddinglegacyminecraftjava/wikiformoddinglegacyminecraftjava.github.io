@@ -755,19 +755,45 @@ itemGroup.creativemodemodtab=Creative Mode Mod Tab
 					<div id="modding_tips" class="wiki-page" style="display:none;">
 						<hr>
 						<h1>Modding tips</h1>
-						How to have your mod send a message in chat: "playerIn.sendMessage(new TextComponentString("Insert text here"));"
+						<u>How to have your mod send a message in chat: "playerIn.sendMessage(new TextComponentString("Insert text here"));"</u>
 						<br>
 						Example usage:
 						<pre class="pre-overflow-fix"><code class="styled-code">. . .
-if(exampleEvent == true) {
+@Override
+public ItemStack methodName(. . ., EntityPlayer playerIn, . . .)
+{
 	. . .
 	playerIn.sendMessage(new TextComponentString("Insert text here"));
 	. . .
 }
 . . .</code></pre>
 					
-					<br>
-					If a mod is open source you can look at its code to see how it works and apply that knowledge to your mod.
+						<br>
+						
+						<u>If a mod is open source you can look at its code to see how it works and apply that knowledge to your mod.</u>
+						
+						<br>
+						<br>
+						
+						<u>How to load changes to your mod without restarting the client in IntelliJ IDEA (also known as <b>Hotswapping</b>):</u>
+						<br>
+						Setup: In IntelliJ IDEA, go to Settings -> Keymap -> Search for "Compile and Reload Modified Files" -> Set up your desired keybind.
+						<br>
+						Loading code changes (CURRENTLY ONLY LOADS CHANGES MADE WITHIN JAVA METHOD BODIES):
+						<br>
+						1. Run your mod in Debug Mode using IntelliJ IDEA.
+						<br>
+						2. Make any changes to the code only if the changes are made inside of a method.
+						<br>
+						3. Once you make any changes to the code, you will see a small popup button on the top right side of your code in IntelliJ IDEA that says "Code changed: (bug icon with refresh icon)". You can either:
+						<br>
+						- Click on this button to load your new changes.
+						<br>
+						-  Use the keybind you set up earlier to load your new changes.
+						<br>
+						4. Your changes are now applied to the currently running Minecraft client.
+						<br>
+						There are other IntelliJ IDEA plugins you can use to broaden what can be changed while the client is running (such as HotSwapAgent and HotSwapHelper) but tutorials on how to use those are a W.I.P.
 					</div>
 					
 					<div id="troubleshooting" class="wiki-page" style="display:none;">
